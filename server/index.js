@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken'); // eslint-disable-line
 const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
+const authorizationMiddleware = require('./authorization-middleware');
 
 const db = new pg.Pool({ // eslint-disable-line
   connectionString: process.env.DATABASE_URL,
@@ -16,8 +17,11 @@ const db = new pg.Pool({ // eslint-disable-line
 });
 
 const app = express();
+
 const jsonMiddleware = express.json();
+
 app.use(jsonMiddleware);
+
 app.use(staticMiddleware);
 // test
 app.get('/api/hello', (req, res) => {
@@ -26,7 +30,7 @@ app.get('/api/hello', (req, res) => {
 });
 
 // registration
-app.post('/api/auth/sign-up', (req, res, next) => {
+app.post('/api/auth/register', (req, res, next) => {
   console.log('post SIGN UP');
   const { firstName, lastName, email, password } = req.body;
   console.log(firstName, lastName, email, password);
@@ -59,7 +63,7 @@ app.post('/api/auth/sign-up', (req, res, next) => {
     .catch(err => next(err));
 });
 //sign in
-app.post('/api/auth/sign-in', (req, res, next) => {
+app.post('/api/auth/login', (req, res, next) => {
   console.log('post SIGN IN')
   const { email, password } = req.body;
   if (!email || !password) {
@@ -76,7 +80,7 @@ app.post('/api/auth/sign-in', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       const [user] = result.rows;
-      console.log('111', user)
+      console.log('INSIDE POST SIGN IN USER', user)
       if (!user) {
         throw new ClientError(401, 'invalid login USER NO EXIST');
       }
@@ -88,13 +92,57 @@ app.post('/api/auth/sign-in', (req, res, next) => {
           if (!isMatching) {
             throw new ClientError(401, 'invalid login WRONG PASSWORD');
           }
-          const payload = {userId, email};
+          const payload = {
+            userId: userId,
+            username: email
+          };
           const token = jwt.sign(payload, process.env.TOKEN_SECRET);
-          res.status(200).json({ payload, token });
+          res.status(200).json({ user: payload, token });
         })
     })
     .catch(err => next(err));
 });
+
+/* ⛔ Every route after this middleware requires a token! ⛔ */
+
+app.use(authorizationMiddleware);
+//login with token
+app.post('/api/login', (req, res, next) => {
+  const { userId } = req.user;
+  console.log('userID', userId);
+  const { question, answer } = req.body;
+  if (!question || !answer) {
+    throw new ClientError(400, 'question and answer are required fields');
+  }
+  const sql = `
+    insert into "flashcards" ("userId", "question", "answer")
+    values ($1, $2, $3)
+    returning *
+  `;
+  const params = [userId, question, answer];
+  db.query(sql, params)
+    .then(result => {
+      const [flashcard] = result.rows;
+      res.status(201).json(flashcard);
+    })
+    .catch(err => next(err));
+});
+
+// app.get('/api/flashcards', (req, res, next) => {
+//   const { userId } = req.user;
+//   const sql = `
+//     select *
+//       from "flashcards"
+//      where "userId" = $1
+//   `;
+//   const params = [userId];
+//   db.query(sql, params)
+//     .then(result => {
+//       res.json(result.rows);
+//     })
+//     .catch(err => next(err));
+// });
+//
 
 app.use(errorMiddleware);
 
