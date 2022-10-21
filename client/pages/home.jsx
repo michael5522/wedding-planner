@@ -9,7 +9,7 @@ export default function Home(props) {
           <h2>Wedding Planning</h2>
           <h2>Assistant</h2>
           <h5 className="mb-3">Get started with planning</h5>
-          <a href="#login" className="btn btn-outline-secondary mt-2" role="button">Sign up for free!</a>
+          <a href="#register" className="btn btn-outline-secondary mt-2" role="button">Sign up for free!</a>
 
         </div>
         <div className="col d-flex align-items-center">
