@@ -1,6 +1,7 @@
+/* eslint-disable */
 const jwt = require('jsonwebtoken'); // eslint-disable-line
 const ClientError = require('./client-error'); // eslint-disable-line
-/* eslint-disable */
+
 function authorizationMiddleware(req, res, next) {
 
   console.log('ola auth middleware');
