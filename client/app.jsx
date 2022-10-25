@@ -6,6 +6,7 @@ import Home from './pages/home';
 import Header from './components/header';
 import NotFound from './pages/not-found';
 import Auth from './pages/auth';
+import Menu from './pages/menu';
 import { parseRoute } from './lib';
 // import PageContainer from './components/page-container';
 
@@ -56,6 +57,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'login' || route.path === 'register') {
       return <Auth />;
+    }
+    if (route.path === 'menu') {
+      return <Menu />;
     }
     return <NotFound />;
   }
