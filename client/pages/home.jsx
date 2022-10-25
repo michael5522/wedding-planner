@@ -23,7 +23,7 @@ export default function Home(props) {
         <div className="col-md-4 border rounded">
           <h4>Guest List Manager</h4>
           <h6 className="italic">Simplify address collection</h6>
-          <p className="text-justify indent"><br />Whether you’re having a wedding shower, bach party, engagement party or rehearsal dinner, our guest list manager was thoughtfully designed to help you gather guest info and keep it organized for any and all of your events.</p>
+          <p className="text-justify"><br />Whether you’re having a wedding shower, bach party, engagement party or rehearsal dinner, our guest list manager was thoughtfully designed to help you gather guest info and keep it organized for any and all of your events.</p>
         </div>
 
         <div className="col-md-4 border rounded">
