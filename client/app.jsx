@@ -8,6 +8,7 @@ import NotFound from './pages/not-found';
 import Auth from './pages/auth';
 import Menu from './pages/menu';
 import Faq from './pages/faq';
+import Budget from './pages/budget'
 import { parseRoute } from './lib';
 
 export default class App extends React.Component {
@@ -63,6 +64,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'faq') {
       return <Faq />;
+    }
+    if (route.path === 'budgetlist') {
+      return <Budget />;
     }
     return <NotFound />;
   }
