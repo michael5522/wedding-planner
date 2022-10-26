@@ -25,3 +25,7 @@ a.card:hover {
 .padding-0-for-card-body {
   padding-top: 0;
 }
+
+.img-half {
+  max-width: 50%;
+}
