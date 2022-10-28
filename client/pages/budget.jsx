@@ -15,16 +15,16 @@ export default class Budget extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log('name--', name);
-    console.log('value--', value);
+    // console.log('name--', name);
+    // console.log('value--', value);
     this.setState({ [name]: value });
   }
 
   handleSubmit(event) {
 
     event.preventDefault();
-    const { action } = this.props;
     console.log('it is a register handle submit');
+    console.log('inside handle submit', this.state);
     // const req = {
     //   method: 'POST',
     //   headers: {
@@ -54,7 +54,7 @@ export default class Budget extends React.Component {
   render() {
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
-    console.log(' inside budget, the state', this.state);
+    // console.log(' inside budget, the state', this.state);
     return (
       <div className="container">
 
