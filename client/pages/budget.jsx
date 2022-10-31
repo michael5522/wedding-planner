@@ -95,7 +95,7 @@ export default class Budget extends React.Component {
 
               <ul className="list-group mb-2">
 
-                <li className="list-group-item d-flex justify-content-between">
+                {/* <li className="list-group-item d-flex justify-content-between">
                   <h6>Cake</h6>
                   <h6 className="text-muted">$500</h6>
                 </li>
@@ -103,7 +103,7 @@ export default class Budget extends React.Component {
                 <li className="list-group-item d-flex justify-content-between">
                   <h6>Wedding Dress</h6>
                   <h6 className="text-muted">$2000</h6>
-                </li>
+                </li> */}
                 <TodoList todos={this.state.bList} />
 
               </ul>

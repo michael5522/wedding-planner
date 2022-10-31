@@ -127,7 +127,7 @@ app.get('/api/budgeter44', (req, res) => {
   const sql = `
   select "item", "cost", "itemId"
   from "budgeter"
-  where "userId" = 6;
+  where "userId" = 10;
   `;
   db.query(sql)
     .then(result => {
