@@ -18,7 +18,20 @@ export default class Budget extends React.Component {
   }
 
   componentDidMount(){
-    fetch('/api/budgeter44')
+    // fetch('/api/budgeter44')
+    //   .then(res => res.json())
+    //   .then(data =>
+    //     this.setState({
+    //       bList: data,
+    //       gettingData: false
+    //     }));
+    const myInit = {
+      method: 'GET',
+      headers: {
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    }
+    fetch('/api/budgeter4', myInit)
       .then(res => res.json())
       .then(data =>
         this.setState({
