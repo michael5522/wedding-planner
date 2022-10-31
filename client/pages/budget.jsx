@@ -29,9 +29,30 @@ export default class Budget extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log('name--', name);
-    // console.log('value--', value);
     this.setState({ [name]: value });
+  }
+
+  addToBudget(newItem){
+    const budgetList = this.state.bList;
+    const budgetListCopy = [...budgetList];
+    const myInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      },
+      body: JSON.stringify(newItem)
+    };
+    fetch('api/budgeterAdd', myInit)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          bList: budgetListCopy.concat(data),
+          item: '',
+          cost: ''
+        })
+      );
+      console.log('item added last console log?',this.state);
   }
 
   handleSubmit(event) {
@@ -39,41 +60,28 @@ export default class Budget extends React.Component {
     event.preventDefault();
     console.log('it is a register handle submit');
     console.log('inside handle submit', this.state);
-    // const req = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state)
-    // };
-    // fetch(`/api/auth/${action}`, req)
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log('auth result:', result);
-    //     console.log('token', result.token);
-    //     console.log('result.user', result.user);
-    //     if (action === 'register') {
-    //       window.location.hash = 'login';
-    //     } else if (result.user && result.token) {
-    //       console.log('this is triggering!!1');
-    //       this.props.onSignIn(result);
-    //     }
-    //   });
-    this.setState({
-      item: '',
-      cost: ''
-    });
+    const newItem = {
+      item: this.state.item,
+      cost: this.state.cost
+    };
+    console.log('new itammm',newItem)
+    this.addToBudget(newItem);
+    // this.setState({
+    //   item: '',
+    //   cost: ''
+    // });
   }
 
   render() {
+    console.log(this.state);
     if(this.state.gettingData){
       console.log('hit 1st run returning null going to component did mount')
       return null;
     }
-    console.log('this is isnide budget',this.state.bList);
+    // console.log('this is isnide budget',this.state.bList);
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
-    // console.log(' inside budget, the state', this.state);
+
     return (
       <div className="container">
 
@@ -95,15 +103,6 @@ export default class Budget extends React.Component {
 
               <ul className="list-group mb-2">
 
-                {/* <li className="list-group-item d-flex justify-content-between">
-                  <h6>Cake</h6>
-                  <h6 className="text-muted">$500</h6>
-                </li>
-
-                <li className="list-group-item d-flex justify-content-between">
-                  <h6>Wedding Dress</h6>
-                  <h6 className="text-muted">$2000</h6>
-                </li> */}
                 <TodoList todos={this.state.bList} />
 
               </ul>
@@ -152,22 +151,3 @@ export default class Budget extends React.Component {
   }
 
 }
-
-// function TodoList() {
-//   return (
-//     <ul className="list-group shadow-sm">
-//       {
-//         this.state.todos.map(todo => {
-//           return (
-//             <p>
-//               <li className="list-group-item d-flex justify-content-between">
-//                 <h6>{item}</h6>
-//                 <h6 className="text-muted">{cost}</h6>
-//               </li>
-//             </p>
-//           );
-//         })
-//       }
-//     </ul>
-//   );
-// }
