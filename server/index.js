@@ -121,13 +121,13 @@ app.get('/api/budgeter', (req, res) => {
       });
     });
 });
-//sort by USDER ID 10
+//sort by USDER ID 4
 app.get('/api/budgeter44', (req, res) => {
   console.log('ola')
   const sql = `
-  select *
+  select "item", "cost", "itemId"
   from "budgeter"
-  where "userId" = 10;
+  where "userId" = 6;
   `;
   db.query(sql)
     .then(result => {
@@ -209,6 +209,8 @@ app.post('/api/budgeterAdd', (req, res)=>{
     })
     .catch(err => next(err));
 })
+
+
 // app.get('/api/flashcards', (req, res, next) => {
 //   const { userId } = req.user;
 //   const sql = `

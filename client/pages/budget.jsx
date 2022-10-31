@@ -1,16 +1,30 @@
 /* eslint-disable */
 import React from 'react';
 import AppContext from '../lib/app-context';
+import TodoList from '../components/budget-list'
+
 
 export default class Budget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       item: '',
-      cost: ''
+      cost: '',
+      bList: [],
+      gettingData: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    fetch('/api/budgeter44')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          bList: data,
+          gettingData: false
+        }));
   }
 
   handleChange(event) {
@@ -52,6 +66,11 @@ export default class Budget extends React.Component {
   }
 
   render() {
+    if(this.state.gettingData){
+      console.log('hit 1st run returning null going to component did mount')
+      return null;
+    }
+    console.log('this is isnide budget',this.state.bList);
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
     // console.log(' inside budget, the state', this.state);
@@ -66,13 +85,16 @@ export default class Budget extends React.Component {
           </p>
           <a className="d-flex justify-content-center btn btn-outline-secondary mb-3" href="#menu"> Return to Menu</a>
 
+
           <div className="row">
             <div className="col">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
                 <span className="text-muted">Item List</span>
                 <span className="badge badge-secondary">3</span>
               </h4>
+
               <ul className="list-group mb-2">
+
                 <li className="list-group-item d-flex justify-content-between">
                   <h6>Cake</h6>
                   <h6 className="text-muted">$500</h6>
@@ -82,6 +104,8 @@ export default class Budget extends React.Component {
                   <h6>Wedding Dress</h6>
                   <h6 className="text-muted">$2000</h6>
                 </li>
+                <TodoList todos={this.state.bList} />
+
               </ul>
             </div>
             <div className="col">
@@ -128,3 +152,22 @@ export default class Budget extends React.Component {
   }
 
 }
+
+// function TodoList() {
+//   return (
+//     <ul className="list-group shadow-sm">
+//       {
+//         this.state.todos.map(todo => {
+//           return (
+//             <p>
+//               <li className="list-group-item d-flex justify-content-between">
+//                 <h6>{item}</h6>
+//                 <h6 className="text-muted">{cost}</h6>
+//               </li>
+//             </p>
+//           );
+//         })
+//       }
+//     </ul>
+//   );
+// }
