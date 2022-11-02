@@ -103,6 +103,44 @@ app.post('/api/auth/login', (req, res, next) => {
     .catch(err => next(err));
 });
 
+//get budget list
+app.get('/api/budgeter', (req, res) => {
+  const sql = `
+  select *
+  from "budgeter"
+  order by "userId"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+//sort by USDER ID 4
+app.get('/api/budgeter44', (req, res) => {
+  console.log('ola')
+  const sql = `
+  select "item", "cost", "itemId"
+  from "budgeter"
+  where "userId" = 10;
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
+
 /* ⛔ Every route after this middleware requires a token! ⛔ */
 
 app.use(authorizationMiddleware);
@@ -127,6 +165,51 @@ app.post('/api/login', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+//sort by USDER ID
+app.get('/api/budgeter4', (req, res) => {
+  const userId = req.user.userId;
+  console.log('ola userID from budgeter', userId)
+  const sql = `
+  select *
+  from "budgeter"
+  where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
+
+//can Add new entry
+app.post('/api/budgeterAdd', (req, res)=>{
+  const userId = req.user.userId;
+  console.log('POST this is the adding into budget', userId);
+  const {item, cost } = req.body;
+  if(!item || !cost){
+    throw new ClientError(400, 'cost and item are required fields');
+  }
+  const sql = `
+    insert into "budgeter" ("userId" ,"item" , "cost")
+    values ($1, $2, $3)
+    returning *
+  `
+  const params = [userId, item, cost];
+  db.query(sql, params)
+    .then(result => {
+      const item = result.rows;
+      res.status(201).json(item);
+    })
+    .catch(err => next(err));
+})
+
 
 // app.get('/api/flashcards', (req, res, next) => {
 //   const { userId } = req.user;
