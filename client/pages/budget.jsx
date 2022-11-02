@@ -65,33 +65,27 @@ export default class Budget extends React.Component {
           cost: ''
         })
       );
-      console.log('item added last console log?',this.state);
   }
 
   handleSubmit(event) {
 
     event.preventDefault();
-    console.log('it is a register handle submit');
-    console.log('inside handle submit', this.state);
+    // console.log('it is a register handle submit');
+    // console.log('inside handle submit', this.state);
     const newItem = {
       item: this.state.item,
       cost: this.state.cost
     };
-    console.log('new itammm',newItem)
+    // console.log('new itammm',newItem)
     this.addToBudget(newItem);
-    // this.setState({
-    //   item: '',
-    //   cost: ''
-    // });
   }
 
   render() {
-    console.log(this.state);
+
     if(this.state.gettingData){
       console.log('hit 1st run returning null going to component did mount')
       return null;
     }
-    // console.log('this is isnide budget',this.state.bList);
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
@@ -111,7 +105,7 @@ export default class Budget extends React.Component {
             <div className="col">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
                 <span className="text-muted">Item List</span>
-                <span className="badge badge-secondary">3</span>
+                <span className="badge badge-secondary">$</span>
               </h4>
 
               <ul className="list-group mb-2">
@@ -133,6 +127,7 @@ export default class Budget extends React.Component {
                     id="item"
                     type="text"
                     name="item"
+                    value={this.state.item}
                     onChange={handleChange}
                     className="form-control bg-light" />
                 </div>
@@ -145,6 +140,7 @@ export default class Budget extends React.Component {
                     id="cost"
                     type="text"
                     name="cost"
+                    value={this.state.cost}
                     onChange={handleChange}
                     className="form-control bg-light" />
                 </div>
