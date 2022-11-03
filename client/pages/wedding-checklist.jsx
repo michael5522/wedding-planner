@@ -69,7 +69,7 @@ export default class WeddingChecklist extends React.Component {
     //   );
     this.setState({
       checkListToDo: '',
-      checkListCategory: '',
+      checkListCategory: 'default',
     });
   }
 
@@ -80,8 +80,8 @@ export default class WeddingChecklist extends React.Component {
     console.log('inside handle submit', this.state);
 
     const newItem = {
-      item: this.state.checkListToDo,
-      cost: this.state.checkListCategory
+      checkListToDo: this.state.checkListToDo,
+      checkListCategory: this.state.checkListCategory
     };
     console.log('new itammm',newItem)
     this.addToWeddingChecklist(newItem);
@@ -139,7 +139,7 @@ export default class WeddingChecklist extends React.Component {
                     className="form-control bg-light" />
                 </div>
 
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label htmlFor="checkListCategory" className="form-label">
                     Category:
                   </label>
@@ -151,7 +151,26 @@ export default class WeddingChecklist extends React.Component {
                     value={this.state.checkListCategory}
                     onChange={handleChange}
                     className="form-control bg-light" />
+                </div> */}
+
+                <div className="mb-3">
+
+                  <label htmlFor="checkListCategory" className="form-label">
+                    Category:
+                  </label>
+                  <br/>
+                  <select  name="checkListCategory" value={this.state.checkListCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
+                    <option  value="" disabled>Select Category here</option>
+                    <option value="Day of Wedding">Day Of Wedding</option>
+                    <option value="1 Week">1 Week</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="3 Month">3 Month</option>
+                    <option value="6 Month">6 Month</option>
+                    <option value="1 Year+">1 Year+</option>
+                  </select>
+
                 </div>
+
                 <div className="d-flex ">
                   <button type="submit" className="btn btn-primary btn-block">
                     Add to the List

@@ -29,3 +29,7 @@ a.card:hover {
 .img-half {
   max-width: 50%;
 }
+
+.select:focus {
+  border-color: blue;
+}
