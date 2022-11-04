@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import AppContext from '../lib/app-context';
-import TodoList from '../components/budget-list'
+import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
 
 
 export default class WeddingChecklist extends React.Component {
@@ -18,26 +18,19 @@ export default class WeddingChecklist extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/budgeter44')
+    const myInit = {
+      method: 'GET',
+      headers: {
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    }
+    fetch('/api/weddingCheckListUser', myInit)
       .then(res => res.json())
       .then(data =>
         this.setState({
           bList: data,
           gettingData: false
         }));
-    // const myInit = {
-    //   method: 'GET',
-    //   headers: {
-    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
-    //   }
-    // }
-    // fetch('/api/budgeter4', myInit)
-    //   .then(res => res.json())
-    //   .then(data =>
-    //     this.setState({
-    //       bList: data,
-    //       gettingData: false
-    //     }));
   }
 
   handleChange(event) {
@@ -48,29 +41,32 @@ export default class WeddingChecklist extends React.Component {
   }
 
   addToWeddingChecklist(newItem) {
-    // const budgetList = this.state.bList;
-    // const budgetListCopy = [...budgetList];
-    // const myInit = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
-    //   },
-    //   body: JSON.stringify(newItem)
-    // };
-    // fetch('api/budgeterAdd', myInit)
-    //   .then(res => res.json())
-    //   .then(data =>
-    //     this.setState({
-    //       bList: budgetListCopy.concat(data),
-    //       item: '',
-    //       cost: ''
-    //     })
-    //   );
-    this.setState({
-      checkListToDo: '',
-      checkListCategory: 'default',
-    });
+    const budgetList = this.state.bList;
+    const budgetListCopy = [...budgetList];
+    const myInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      },
+      body: JSON.stringify(newItem)
+    };
+
+    function compareNumbers(a, b) {
+      return a.checkListCategory[0] - b.checkListCategory[0];
+    }
+    fetch('api/weddingCheckListAdd', myInit)
+      .then(res => res.json())
+      .then(data => {
+        const newList = this.state.bList.concat(data);
+        newList.sort(compareNumbers);
+        this.setState({
+          bList: newList,
+          checkListToDo: '',
+          checkListCategory: '',
+        })
+      }
+    );
   }
 
   handleSubmit(event) {
@@ -88,11 +84,11 @@ export default class WeddingChecklist extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    // if (this.state.gettingData) {
-    //   console.log('hit 1st run returning null going to component did mount')
-    //   return null;
-    // }
+    // console.log(this.state)
+    if (this.state.gettingData) {
+      console.log('hit 1st run returning null going to component did mount')
+      return null;
+    }
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
@@ -109,24 +105,26 @@ export default class WeddingChecklist extends React.Component {
 
 
           <div className="row">
-            <div className="col">
+
+            {/* <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">To Do's</span>
-                <span className="badge badge-secondary">#</span>
+                <span className="text-muted">TimeLine</span>
+                <span className="badge badge-secondary">Tasks</span>
               </h4>
 
-              <ul className="list-group mb-2">
+              <ul className="list-group mb-5 overflow-control">
 
-                <TodoList todos={this.state.bList} />
+                <TodoListWeddingCheckList todos={this.state.bList} />
 
               </ul>
-            </div>
-            <div className="col">
+            </div> */}
+
+            <div className="col-12 col-md-6">
 
               <form className="w-100" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="checkListToDo" className="form-label">
-                    Add a To Do:
+                    Add to CheckList:
                   </label>
                   <input
                     required
@@ -139,36 +137,20 @@ export default class WeddingChecklist extends React.Component {
                     className="form-control bg-light" />
                 </div>
 
-                {/* <div className="mb-3">
-                  <label htmlFor="checkListCategory" className="form-label">
-                    Category:
-                  </label>
-                  <input
-                    required
-                    id="checkListCategory"
-                    type="text"
-                    name="checkListCategory"
-                    value={this.state.checkListCategory}
-                    onChange={handleChange}
-                    className="form-control bg-light" />
-                </div> */}
-
                 <div className="mb-3">
-
                   <label htmlFor="checkListCategory" className="form-label">
                     Category:
                   </label>
                   <br/>
                   <select  name="checkListCategory" value={this.state.checkListCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
                     <option  value="" disabled>Select Category here</option>
-                    <option value="Day of Wedding">Day Of Wedding</option>
-                    <option value="1 Week">1 Week</option>
-                    <option value="1 Month">1 Month</option>
-                    <option value="3 Month">3 Month</option>
-                    <option value="6 Month">6 Month</option>
-                    <option value="1 Year+">1 Year+</option>
+                    <option value="1. &nbsp;&nbsp;Day of Wedding">Day Of Wedding</option>
+                    <option value="2. &nbsp;&nbsp;One week to go">1 Week to go</option>
+                    <option value="3. &nbsp;&nbsp;One month to go">1 Month to go</option>
+                    <option value="4. &nbsp;&nbsp;Three month to go">3 Month to go</option>
+                    <option value="5. &nbsp;&nbsp;Half Year to go">6 Month to go</option>
+                    <option value="6. &nbsp;&nbsp;One Year+ to go">1 Year plus to go</option>
                   </select>
-
                 </div>
 
                 <div className="d-flex ">
@@ -179,6 +161,20 @@ export default class WeddingChecklist extends React.Component {
               </form>
 
             </div>
+
+            <div className="col-12 col-md-6">
+              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
+                <span className="text-muted">TimeLine</span>
+                <span className="badge badge-secondary">Tasks</span>
+              </h4>
+
+              <ul className="list-group mb-5 overflow-control">
+
+                <TodoListWeddingCheckList todos={this.state.bList} />
+
+              </ul>
+            </div>
+
           </div>
         </section>
 
