@@ -1,15 +1,17 @@
 /* eslint-disable */
 import React from 'react';
 import AppContext from '../lib/app-context';
-import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
+import GuestList from '../components/guestlist-manager-list';
 
 
 export default class GuestListManager extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkListToDo: '',
-      checkListCategory: '',
+      guestFirstName: '',
+      guestLastName: '',
+      guestEmail: '',
+      guestRelationship: '',
       bList: [],
       gettingData: true
     };
@@ -40,49 +42,49 @@ export default class GuestListManager extends React.Component {
   }
 
   addToWeddingChecklist(newItem) {
-    const budgetList = this.state.bList;
-    const budgetListCopy = [...budgetList];
-    const myInit = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Access-Token': localStorage.getItem('react-context-jwt')
-      },
-      body: JSON.stringify(newItem)
-    };
+    // const budgetList = this.state.bList;
+    // const budgetListCopy = [...budgetList];
+    // const myInit = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
+    //   },
+    //   body: JSON.stringify(newItem)
+    // };
 
-    function compareNumbers(a, b) {
-      return a.checkListCategory[0] - b.checkListCategory[0];
-    }
-    fetch('api/weddingCheckListAdd', myInit)
-      .then(res => res.json())
-      .then(data => {
-        const newList = this.state.bList.concat(data);
-        newList.sort(compareNumbers);
-        this.setState({
-          bList: newList,
-          checkListToDo: '',
-          checkListCategory: '',
-        })
-      }
-      );
+    // function compareNumbers(a, b) {
+    //   return a.checkListCategory[0] - b.checkListCategory[0];
+    // }
+    // fetch('api/weddingCheckListAdd', myInit)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     const newList = this.state.bList.concat(data);
+    //     newList.sort(compareNumbers);
+    //     this.setState({
+    //       bList: newList,
+    //       checkListToDo: '',
+    //       checkListCategory: '',
+    //     })
+    //   }
+    //   );
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist');
-    // console.log('inside handle submit', this.state);
+    console.log('it is a handle submit of the form inside wedding checklist---------');
+    console.log('inside handle submit', this.state);
 
-    const newItem = {
-      checkListToDo: this.state.checkListToDo,
-      checkListCategory: this.state.checkListCategory
-    };
-    console.log('new itammm', newItem)
-    this.addToWeddingChecklist(newItem);
+    // const newItem = {
+    //   checkListToDo: this.state.checkListToDo,
+    //   checkListCategory: this.state.checkListCategory
+    // };
+    // console.log('new itammm', newItem)
+    // this.addToWeddingChecklist(newItem);
   }
 
   render() {
-    // console.log(this.state)
+    console.log('this state current', this.state)
     if (this.state.gettingData) {
       console.log('hit 1st run returning null going to component did mount')
       return null;
@@ -97,7 +99,7 @@ export default class GuestListManager extends React.Component {
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
           <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Guest List Manager</h3>
           <p className="text-center mb-2">
-            Please fill out your guests below!
+            Fill out your guest information below!
           </p>
           <a className="d-flex justify-content-center btn btn-outline-secondary mb-3" href="#menu"> Return to Menu</a>
 
@@ -107,38 +109,69 @@ export default class GuestListManager extends React.Component {
             <div className="col-12 col-md-6">
               <form className="w-100" onSubmit={handleSubmit}>
 
-                <div className="mb-3 mt-3">
-                  <label htmlFor="checkListToDo" className="form-label">
-                    Add to Guest list:
+                <div className="mb-1 mt-3">
+                  <h4>Add to Guest List</h4>
+                  <label htmlFor="guestFirstName" className="form-label">
+                    First name:
                   </label>
                   <input
                     required
                     autoFocus
-                    id="checkListToDo"
+                    id="guestFirstName"
                     type="text"
-                    name="checkListToDo"
-                    value={this.state.checkListToDo}
+                    name="guestFirstName"
+                    value={this.state.guestFirstName}
                     onChange={handleChange}
                     className="form-control bg-light" />
                 </div>
 
-                <div className="mb-3">
-                  <label htmlFor="checkListCategory" className="form-label">
-                    Category:
+                <div className="mb-1">
+                  <label htmlFor="guestLastName" className="form-label">
+                    Last name:
+                  </label>
+                  <input
+                    required
+                    autoFocus
+                    id="guestLastName"
+                    type="text"
+                    name="guestLastName"
+                    value={this.state.guestLastName}
+                    onChange={handleChange}
+                    className="form-control bg-light" />
+                </div>
+
+                <div className="mb-1">
+                  <label htmlFor="guestEmail" className="form-label">
+                    Email address:
+                  </label>
+                  <input
+                    required
+                    autoFocus
+                    id="guestEmail"
+                    type="text"
+                    name="guestEmail"
+                    value={this.state.guestEmail}
+                    onChange={handleChange}
+                    className="form-control bg-light" />
+                </div>
+
+                <div className="mb-1">
+                  <label htmlFor="guestRelationship" className="form-label">
+                    Relationship:
                   </label>
                   <br />
-                  <select name="checkListCategory" value={this.state.checkListCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
-                    <option value="" disabled>Select Category here</option>
-                    <option value="1. &nbsp;&nbsp;Day of Wedding">Day Of Wedding</option>
-                    <option value="2. &nbsp;&nbsp;One week to go">1 Week to go</option>
-                    <option value="3. &nbsp;&nbsp;One month to go">1 Month to go</option>
-                    <option value="4. &nbsp;&nbsp;Three month to go">3 Month to go</option>
-                    <option value="5. &nbsp;&nbsp;Half Year to go">6 Month to go</option>
-                    <option value="6. &nbsp;&nbsp;One Year+ to go">1 Year plus to go</option>
+                  <select name="guestRelationship" value={this.state.guestRelationship} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
+                    <option value="" disabled>Make selection here</option>
+                    <option value="Parent">Parent</option>
+                    <option value="Close relative">Close relative</option>
+                    <option value="Relative">Relative</option>
+                    <option value="Close friend">Close friend</option>
+                    <option value="Friend">friend</option>
+                    <option value="Misc">Misc</option>
                   </select>
                 </div>
 
-                <div className="d-flex mt-4">
+                <div className="d-flex mt-2 mb-4">
                   <button type="submit" className="btn btn-primary btn-block">
                     Add to the List
                   </button>
@@ -155,7 +188,12 @@ export default class GuestListManager extends React.Component {
 
               <ul className="list-group mb-5 overflow-control">
 
-                <TodoListWeddingCheckList todos={this.state.bList} />
+                {/* <GuestList todos={this.state.bList} /> */}
+                <li className="list-group-item">
+
+                  <h6>Hana Liu, friendo</h6>
+                  <h6 className="text-muted font-italic">michekl@gmaio.com</h6>
+                </li>
 
               </ul>
             </div>
