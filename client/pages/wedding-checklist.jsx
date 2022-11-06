@@ -34,7 +34,6 @@ export default class WeddingChecklist extends React.Component {
   }
 
   handleChange(event) {
-
     const { name, value } = event.target;
     console.log(name, value)
     this.setState({ [name]: value });
@@ -70,10 +69,9 @@ export default class WeddingChecklist extends React.Component {
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
-    console.log('it is a handle submit of the form inside wedding checklist');
-    console.log('inside handle submit', this.state);
+    // console.log('it is a handle submit of the form inside wedding checklist');
+    // console.log('inside handle submit', this.state);
 
     const newItem = {
       checkListToDo: this.state.checkListToDo,
@@ -106,23 +104,10 @@ export default class WeddingChecklist extends React.Component {
 
           <div className="row">
 
-            {/* <div className="col-12 col-md-6">
-              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">TimeLine</span>
-                <span className="badge badge-secondary">Tasks</span>
-              </h4>
-
-              <ul className="list-group mb-5 overflow-control">
-
-                <TodoListWeddingCheckList todos={this.state.bList} />
-
-              </ul>
-            </div> */}
-
             <div className="col-12 col-md-6">
-
               <form className="w-100" onSubmit={handleSubmit}>
-                <div className="mb-3">
+
+                <div className="mb-3 mt-3">
                   <label htmlFor="checkListToDo" className="form-label">
                     Add to CheckList:
                   </label>
@@ -153,18 +138,18 @@ export default class WeddingChecklist extends React.Component {
                   </select>
                 </div>
 
-                <div className="d-flex ">
+                <div className="d-flex mt-4">
                   <button type="submit" className="btn btn-primary btn-block">
                     Add to the List
                   </button>
                 </div>
-              </form>
 
+              </form>
             </div>
 
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">TimeLine</span>
+                <span className="text-muted">Timeline</span>
                 <span className="badge badge-secondary">Tasks</span>
               </h4>
 
