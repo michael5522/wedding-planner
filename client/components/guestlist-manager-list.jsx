@@ -1,14 +1,13 @@
 import React from 'react';
 
 export default function GuestList(props) {
-  // console.log(props.todos);
+  // console.log(props.gList);
   return (
-    props.todos.map(todo => {
-      return <li className="list-group-item d-flex justify-content-between" key={todo.checkListId}>
+    props.gList.map(list => {
+      return <li className="list-group-item" key={list.guestId}>
 
-        <h6>{todo.checkListCategory}</h6>
-        <h6 className="text-muted">{todo.checkListToDo}</h6>
-        <h1>ola</h1>
+        <h6>{list.guestFirstName} {list.guestLastName}, {list.guestRelationship}</h6>
+        <h6 className="text-muted font-italic">{list.guestEmail}</h6>
       </li>;
 
     })

@@ -272,8 +272,52 @@ app.post('/api/weddingCheckListAdd', (req, res) => {
       res.status(201).json(item);
     })
     .catch(err => next(err));
-})
+});
 
+//feature 7 sort by USDER ID DATA for guestlist
+app.get('/api/GuestListManager', (req, res) => {
+  const userId = req.user.userId;
+  console.log('ola userID from guest list checklist', userId)
+  const sql = `
+  select *
+  from "guestListManager"
+  where "userId" = $1
+  order by "guestRelationship" asc
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
+
+//feature 7 user can add new entry into guest list
+app.post('/api/GuestListAddEntry', (req, res) => {
+  const userId = req.user.userId;
+  console.log('post this is in the adding into guest list', userId);
+  const { guestFirstName, guestLastName, guestEmail, guestRelationship } = req.body;
+  if (!guestFirstName|| !guestLastName || !guestEmail || !guestRelationship) {
+    throw new ClientError(400, 'first name, last name, email, and relationship are required fields');
+  }
+  const sql = `
+  insert into "guestListManager"("guestFirstName", "guestLastName", "guestEmail", "guestRelationship", "userId")
+  values ($1,$2,$3,$4,$5)
+  returning *
+  `
+  const params = [guestFirstName, guestLastName, guestEmail, guestRelationship, userId];
+  db.query(sql, params)
+    .then(result => {
+      const item = result.rows;
+      res.status(201).json(item);
+    })
+    .catch(err => next(err));
+});
 
 app.use(errorMiddleware);
 

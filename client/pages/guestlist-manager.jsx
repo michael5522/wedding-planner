@@ -26,7 +26,7 @@ export default class GuestListManager extends React.Component {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
     }
-    fetch('/api/weddingCheckListUser', myInit)
+    fetch('/api/guestListManager', myInit)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -41,33 +41,28 @@ export default class GuestListManager extends React.Component {
     this.setState({ [name]: value });
   }
 
-  addToWeddingChecklist(newItem) {
-    // const budgetList = this.state.bList;
-    // const budgetListCopy = [...budgetList];
-    // const myInit = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
-    //   },
-    //   body: JSON.stringify(newItem)
-    // };
-
-    // function compareNumbers(a, b) {
-    //   return a.checkListCategory[0] - b.checkListCategory[0];
-    // }
-    // fetch('api/weddingCheckListAdd', myInit)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     const newList = this.state.bList.concat(data);
-    //     newList.sort(compareNumbers);
-    //     this.setState({
-    //       bList: newList,
-    //       checkListToDo: '',
-    //       checkListCategory: '',
-    //     })
-    //   }
-    //   );
+  addToGuestListManager(newItem) {
+    const guestList = this.state.bList;
+    const guestListCopy = [...guestList];
+    const myInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      },
+      body: JSON.stringify(newItem)
+    };
+    fetch('api/GuestListAddEntry', myInit)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          bList: guestListCopy.concat(data),
+          guestFirstName: '',
+          guestLastName: '',
+          guestEmail: '',
+          guestRelationship: ''
+        })
+      );
   }
 
   handleSubmit(event) {
@@ -75,12 +70,14 @@ export default class GuestListManager extends React.Component {
     console.log('it is a handle submit of the form inside wedding checklist---------');
     console.log('inside handle submit', this.state);
 
-    // const newItem = {
-    //   checkListToDo: this.state.checkListToDo,
-    //   checkListCategory: this.state.checkListCategory
-    // };
-    // console.log('new itammm', newItem)
-    // this.addToWeddingChecklist(newItem);
+    const newItem = {
+      guestFirstName: this.state.guestFirstName,
+      guestLastName: this.state.guestLastName,
+      guestEmail: this.state.guestEmail,
+      guestRelationship: this.state.guestRelationship
+    };
+    console.log('new itammm', newItem)
+    this.addToGuestListManager(newItem);
   }
 
   render() {
@@ -188,7 +185,7 @@ export default class GuestListManager extends React.Component {
 
               <ul className="list-group mb-5 overflow-control">
 
-                {/* <GuestList todos={this.state.bList} /> */}
+                <GuestList gList={this.state.bList} />
                 <li className="list-group-item">
 
                   <h6>Hana Liu, friendo</h6>
