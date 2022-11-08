@@ -8,7 +8,9 @@ import NotFound from './pages/not-found';
 import Auth from './pages/auth';
 import Menu from './pages/menu';
 import Faq from './pages/faq';
-import Budget from './pages/budget'
+import Budget from './pages/budget';
+import WeddingChecklist from './pages/wedding-checklist';
+import GuestListManager from './pages/guestlist-manager';
 import { parseRoute } from './lib';
 
 export default class App extends React.Component {
@@ -68,6 +70,12 @@ export default class App extends React.Component {
     }
     if (route.path === 'budgetlist') {
       return <Budget />;
+    }
+    if (route.path === 'weddingchecklist'){
+      return <WeddingChecklist />;
+    }
+    if (route.path === 'guestlist') {
+      return <GuestListManager />;
     }
     return <NotFound />;
   }

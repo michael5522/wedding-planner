@@ -141,6 +141,25 @@ app.get('/api/budgeter44', (req, res) => {
     });
 });
 
+//get wedding checklist
+app.get('/api/weddingchecklist', (req, res) => {
+  const sql = `
+  select *
+  from "weddingCheckList"
+  order by "userId"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 /* ⛔ Every route after this middleware requires a token! ⛔ */
 
 app.use(authorizationMiddleware);
@@ -166,7 +185,7 @@ app.post('/api/login', (req, res, next) => {
     .catch(err => next(err));
 });
 
-//sort by USDER ID
+//feature 5 sort by USDER ID for BUDGET
 app.get('/api/budgeter4', (req, res) => {
   const userId = req.user.userId;
   console.log('ola userID from budgeter', userId)
@@ -188,7 +207,7 @@ app.get('/api/budgeter4', (req, res) => {
     });
 });
 
-//can Add new entry
+//feature 5 can Add new entry into BUDGET
 app.post('/api/budgeterAdd', (req, res)=>{
   const userId = req.user.userId;
   console.log('POST this is the adding into budget', userId);
@@ -210,22 +229,51 @@ app.post('/api/budgeterAdd', (req, res)=>{
     .catch(err => next(err));
 })
 
+//feature 6 sort by USDER ID DATA for wedding checklist
+app.get('/api/weddingCheckListUser', (req, res) => {
+  const userId = req.user.userId;
+  console.log('ola userID from wedding checklist', userId)
+  const sql = `
+  select *
+  from "weddingCheckList"
+  where "userId" = $1
+  order by "checkListCategory" asc
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
 
-// app.get('/api/flashcards', (req, res, next) => {
-//   const { userId } = req.user;
-//   const sql = `
-//     select *
-//       from "flashcards"
-//      where "userId" = $1
-//   `;
-//   const params = [userId];
-//   db.query(sql, params)
-//     .then(result => {
-//       res.json(result.rows);
-//     })
-//     .catch(err => next(err));
-// });
-//
+//feature 6 user can add new entry into wedding checklist
+app.post('/api/weddingCheckListAdd', (req, res) => {
+  const userId = req.user.userId;
+  console.log('post this is in the adding into wedding checklist', userId);
+  const {checkListToDo , checkListCategory } = req.body;
+  if(!checkListToDo || !checkListCategory){
+    throw new ClientError(400, 'to do  and item category are required fields');
+  }
+  const sql = `
+  insert into "weddingCheckList"("checkListToDo", "checkListCategory", "userId")
+  values ($1,$2,$3)
+  returning *
+  `
+  const params = [checkListToDo, checkListCategory, userId];
+  db.query(sql, params)
+    .then( result => {
+      const item = result.rows;
+      res.status(201).json(item);
+    })
+    .catch(err => next(err));
+})
+
 
 app.use(errorMiddleware);
 

@@ -29,3 +29,12 @@ a.card:hover {
 .img-half {
   max-width: 50%;
 }
+
+.select:focus {
+  border-color: blue;
+}
+
+.overflow-control {
+  max-height: 500px;
+  overflow-y: scroll;
+}

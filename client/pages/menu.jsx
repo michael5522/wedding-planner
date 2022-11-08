@@ -45,7 +45,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="weddingchecklist" className="card mb-4 box-shadow border rounded">
+                <a href="#weddingchecklist" className="card mb-4 box-shadow border rounded">
                   <img className="card-img-top img-fluid" src="/images/happy.jpeg" alt="Card image cap" />
                   <div className="card-body padding-0-for-card-body">
                     <h5 className="card-title mb-0">Wedding Checklist</h5>
