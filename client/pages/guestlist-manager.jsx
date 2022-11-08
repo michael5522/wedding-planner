@@ -37,7 +37,7 @@ export default class GuestListManager extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log(name, value)
+    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
@@ -67,8 +67,8 @@ export default class GuestListManager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('it is a handle submit of the form inside wedding checklist---------');
-    console.log('inside handle submit', this.state);
+    // console.log('it is a handle submit of the form inside wedding checklist---------');
+    // console.log('inside handle submit', this.state);
 
     const newItem = {
       guestFirstName: this.state.guestFirstName,
@@ -76,14 +76,14 @@ export default class GuestListManager extends React.Component {
       guestEmail: this.state.guestEmail,
       guestRelationship: this.state.guestRelationship
     };
-    console.log('new itammm', newItem)
+    // console.log('new itammm', newItem)
     this.addToGuestListManager(newItem);
   }
 
   render() {
     console.log('this state current', this.state)
     if (this.state.gettingData) {
-      console.log('hit 1st run returning null going to component did mount')
+      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;
@@ -186,11 +186,11 @@ export default class GuestListManager extends React.Component {
               <ul className="list-group mb-5 overflow-control">
 
                 <GuestList gList={this.state.bList} />
-                <li className="list-group-item">
+                {/* <li className="list-group-item">
 
                   <h6>Hana Liu, friendo</h6>
                   <h6 className="text-muted font-italic">michekl@gmaio.com</h6>
-                </li>
+                </li> */}
 
               </ul>
             </div>
