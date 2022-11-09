@@ -319,6 +319,50 @@ app.post('/api/GuestListAddEntry', (req, res) => {
     .catch(err => next(err));
 });
 
+//feature 8 sort by USDER ID for BUDGET
+app.get('/api/foodListManagerListByUser', (req, res) => {
+  const userId = req.user.userId;
+  console.log('ola userID from foodlist by user', userId)
+  const sql = `
+  select *
+  from "foodListManager"
+  where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
+
+//feature 8 user can add new entry into food list
+app.post('/api/addToFoodList', (req, res, next) => {
+  const userId = req.user.userId;
+  console.log('post this is in the adding into food list', userId);
+  const { foodItem, foodCategory } = req.body;
+  if (!foodItem || !foodCategory) {
+    throw new ClientError(400, 'food name  and food category are required fields');
+  }
+  const sql = `
+  insert into "foodListManager"("foodName", "foodCategory", "userId")
+  values ($1,$2,$3)
+  returning *
+  `
+  const params = [foodItem, foodCategory, userId];
+  db.query(sql, params)
+    .then(result => {
+      const item = result.rows;
+      res.status(201).json(item);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

@@ -9,7 +9,7 @@ export default class CateringList extends React.Component {
     this.state = {
       foodItem: '',
       foodCategory: '',
-      bList: [],
+      foodList: [],
       gettingData: true
     };
     this.handleChange = this.handleChange.bind(this);
@@ -17,19 +17,19 @@ export default class CateringList extends React.Component {
   }
 
   componentDidMount() {
-    // const myInit = {
-    //   method: 'GET',
-    //   headers: {
-    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
-    //   }
-    // }
-    // fetch('/api/weddingCheckListUser', myInit)
-    //   .then(res => res.json())
-    //   .then(data =>
-    //     this.setState({
-    //       bList: data,
-    //       gettingData: false
-    //     }));
+    const myInit = {
+      method: 'GET',
+      headers: {
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    }
+    fetch('/api/foodListManagerListByUser', myInit)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          foodList: data,
+          gettingData: false
+        }));
   }
 
   handleChange(event) {
@@ -39,38 +39,40 @@ export default class CateringList extends React.Component {
   }
 
   addToWeddingChecklist(newItem) {
-    // const budgetList = this.state.bList;
-    // const budgetListCopy = [...budgetList];
-    // const myInit = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'X-Access-Token': localStorage.getItem('react-context-jwt')
-    //   },
-    //   body: JSON.stringify(newItem)
-    // };
+    const budgetList = this.state.foodList;
+    const budgetListCopy = [...budgetList];
+    // console.log('inside add to FOODLIST,', newItem)
+    const myInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      },
+      body: JSON.stringify(newItem)
+    };
 
-    // function compareNumbers(a, b) {
-    //   return a.checkListCategory[0] - b.checkListCategory[0];
-    // }
-    // fetch('api/weddingCheckListAdd', myInit)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     const newList = this.state.bList.concat(data);
-    //     newList.sort(compareNumbers);
-    //     this.setState({
-    //       bList: newList,
-    //       checkListToDo: '',
-    //       checkListCategory: '',
-    //     })
-    //   }
-    //   );
+    function compareNumbers(a, b) {
+      return a.foodCategory[0] - b.foodCategory[0];
+    }
+    fetch('api/addToFoodList', myInit)
+      .then(res => res.json())
+      .then(data => {
+        const newList = this.state.foodList.concat(data);
+        newList.sort(compareNumbers);
+        this.setState({
+          foodList: newList,
+          // foodList: budgetListCopy.concat(data),
+          foodItem: '',
+          foodCategory: '',
+        })
+      }
+      );
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist');
-    // console.log('inside handle submit', this.state);
+    // console.log('handle submit ------it is a handle submit of the form inside wedding checklist');
+    // console.log('handle submit -------inside handle submit', this.state);
 
     const newItem = {
       foodItem: this.state.foodItem,
@@ -83,10 +85,10 @@ export default class CateringList extends React.Component {
   render() {
     console.log(this.state)
 
-    // if (this.state.gettingData) {
-    //   console.log('hit 1st run returning null going to component did mount')
-    //   return null;
-    // }
+    if (this.state.gettingData) {
+      console.log('hit 1st run returning null going to component did mount')
+      return null;
+    }
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
@@ -149,18 +151,12 @@ export default class CateringList extends React.Component {
 
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">Timeline</span>
-                <span className="badge badge-secondary">Tasks</span>
+                <span className="text-muted">Food List</span>
+                <span className="badge badge-secondary">Category</span>
               </h4>
 
               <ul className="list-group mb-5 overflow-control">
-
-                {/* <WeddingCateringList todos={this.state.bList} /> */}
-                <li className="list-group-item d-flex justify-content-between" >
-
-                  <h6>Fish</h6>
-                  <h6 className="text-muted">Cheese Pizza</h6>
-                </li>
+                <WeddingCateringList todos={this.state.foodList} />
               </ul>
             </div>
 
