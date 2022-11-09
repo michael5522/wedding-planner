@@ -34,14 +34,13 @@ export default class CateringList extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log(name, value)
+    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
-  addToWeddingChecklist(newItem) {
-    const budgetList = this.state.foodList;
-    const budgetListCopy = [...budgetList];
-    // console.log('inside add to FOODLIST,', newItem)
+  addToFoodList(newItem) {
+    const foodList = this.state.foodList;
+    const foodListCopy = [...foodList];
     const myInit = {
       method: 'POST',
       headers: {
@@ -51,17 +50,24 @@ export default class CateringList extends React.Component {
       body: JSON.stringify(newItem)
     };
 
-    function compareNumbers(a, b) {
-      return a.foodCategory[0] - b.foodCategory[0];
+    function compareFoodCategory(a,b){
+      // console.log('1',a.foodCategory,'2', b.foodCategory)
+      if(a.foodCategory > b.foodCategory){
+        return 1;
+      }else if (a.foodCategory < b.foodCategory){
+        return -1;
+      }
+      return 0;
     }
-    fetch('api/addToFoodList', myInit)
+
+    fetch('/api/addToFoodList', myInit)
       .then(res => res.json())
       .then(data => {
-        const newList = this.state.foodList.concat(data);
-        newList.sort(compareNumbers);
+        const newList = foodListCopy.concat(data);
+        newList.sort(compareFoodCategory);
+        console.log('this is the latest list',newList)
         this.setState({
           foodList: newList,
-          // foodList: budgetListCopy.concat(data),
           foodItem: '',
           foodCategory: '',
         })
@@ -79,14 +85,14 @@ export default class CateringList extends React.Component {
       foodCategory: this.state.foodCategory
     };
     console.log('new itammm', newItem)
-    this.addToWeddingChecklist(newItem);
+    this.addToFoodList(newItem);
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
 
     if (this.state.gettingData) {
-      console.log('hit 1st run returning null going to component did mount')
+      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;
@@ -131,12 +137,12 @@ export default class CateringList extends React.Component {
                   <br />
                   <select name="foodCategory" value={this.state.foodCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
                     <option value="" disabled>Select Category here</option>
-                    <option value="1. &nbsp;&nbsp;Dairy">Dairy</option>
-                    <option value="2. &nbsp;&nbsp;Fruits">Fruits</option>
-                    <option value="3. &nbsp;&nbsp;Grains">Grains</option>
-                    <option value="4. &nbsp;&nbsp;Protien Foods">Protein Foods</option>
-                    <option value="5. &nbsp;&nbsp;Sweets">Sweets</option>
-                    <option value="6. &nbsp;&nbsp;Vegetables">Vegetables</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Protien Foods">Protein Foods</option>
+                    <option value="Sweets">Sweets</option>
+                    <option value="Vegetables">Vegetables</option>
                   </select>
                 </div>
 

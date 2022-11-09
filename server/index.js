@@ -327,6 +327,7 @@ app.get('/api/foodListManagerListByUser', (req, res) => {
   select *
   from "foodListManager"
   where "userId" = $1
+  order by "foodCategory" asc
   `;
   const params = [userId];
   db.query(sql, params)

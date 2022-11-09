@@ -54,7 +54,7 @@ export default class WeddingChecklist extends React.Component {
     function compareNumbers(a, b) {
       return a.checkListCategory[0] - b.checkListCategory[0];
     }
-    fetch('api/weddingCheckListAdd', myInit)
+    fetch('/api/weddingCheckListAdd', myInit)
       .then(res => res.json())
       .then(data => {
         const newList = this.state.bList.concat(data);
