@@ -50,7 +50,9 @@ export default class App extends React.Component {
   }
 
   handleSignOut() {
+    console.log('handle sign out trigger hereeeeeeeee');
     window.localStorage.removeItem('react-context-jwt');
+    location.hash = '#';
     this.setState({ user: null });
   }
 

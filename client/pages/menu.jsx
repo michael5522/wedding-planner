@@ -5,14 +5,15 @@ import AppContext from '../lib/app-context';
 export default class Menu extends React.Component {
   render() {
 
-    if (!this.context.user) return <Redirect to="sign-in" />;
-
+    // if (!this.context.user) return <Redirect to="sign-in" />;
+    if (!this.context.user) return <Redirect to="" />;
+    const { user } = this.context;
     return (
       <div>
 
         <div className="position-relative overflow-hidden text-center">
           <div className="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 className="display-4 font-weight-normal">A-List Menu</h1>
+            <h1 className="display-4 font-weight-normal">Welcome {user.username},</h1>
             <p className="lead font-weight-normal">Get Started by clicking on an option below!</p>
             <a className="btn btn-outline-secondary" href="#">Return Home</a>
           </div>
