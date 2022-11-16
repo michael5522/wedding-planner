@@ -14,6 +14,7 @@ export default class CateringList extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount() {
@@ -86,6 +87,24 @@ export default class CateringList extends React.Component {
     };
     console.log('new itammm', newItem)
     this.addToFoodList(newItem);
+  }
+
+  deleteItem(itemToBeDeleted){
+    console.log('delete item triggering item:', itemToBeDeleted.foodId);
+    const iDofItem = itemToBeDeleted.foodId;
+    console.log(iDofItem);
+    const foodList = this.state.foodList;
+    const foodListCopy = [...foodList];
+    console.log('food list complete', foodList, foodListCopy);
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.foodId === id);
+      arr.splice(objWithIdIndex, 1);
+
+      return arr;
+    }
+
+    removeObjectWithId(foodListCopy, iDofItem);
+    console.log('answer????',foodListCopy)
   }
 
   render() {
@@ -162,7 +181,7 @@ export default class CateringList extends React.Component {
               </h4>
 
               <ul className="list-group mb-5 overflow-control">
-                <WeddingCateringList todos={this.state.foodList} />
+                <WeddingCateringList todos={this.state.foodList} delete={this.deleteItem}/>
               </ul>
             </div>
 
