@@ -90,21 +90,36 @@ export default class CateringList extends React.Component {
   }
 
   deleteItem(itemToBeDeleted){
-    console.log('delete item triggering item:', itemToBeDeleted.foodId);
     const iDofItem = itemToBeDeleted.foodId;
     console.log(iDofItem);
     const foodList = this.state.foodList;
     const foodListCopy = [...foodList];
-    console.log('food list complete', foodList, foodListCopy);
+
     function removeObjectWithId(arr, id) {
       const objWithIdIndex = arr.findIndex((obj) => obj.foodId === id);
       arr.splice(objWithIdIndex, 1);
-
       return arr;
     }
 
     removeObjectWithId(foodListCopy, iDofItem);
-    console.log('answer????',foodListCopy)
+
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteFoodItem/${iDofItem}`, myInit)
+      .then(
+        this.setState({
+          foodList: foodListCopy
+        })
+      )
+    // this.setState({
+    //   foodList: foodListCopy
+    // });
+    // console.log('answer????',foodListCopy)
   }
 
   render() {

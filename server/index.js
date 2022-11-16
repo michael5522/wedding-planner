@@ -364,6 +364,37 @@ app.post('/api/addToFoodList', (req, res, next) => {
     .catch(err => next(err));
 });
 
+//feature 9 user can delete an item from foodlist
+app.delete('/api/deleteFoodItem/:foodId', (req, res)=>{
+  const foodID = parseInt(req.params.foodId);
+  console.log(foodID);
+  const params = [foodID];
+
+  const sql = `
+  delete from "foodListManager"
+  where "foodId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if(!solution){
+        res.status(404).json({
+          error: `${foodID} cannot be found`
+        });
+      }else{
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+})
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
