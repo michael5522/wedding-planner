@@ -17,6 +17,7 @@ export default class GuestListManager extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteGuest = this.deleteGuest.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +79,39 @@ export default class GuestListManager extends React.Component {
     };
     // console.log('new itammm', newItem)
     this.addToGuestListManager(newItem);
+  }
+
+  deleteGuest(itemToBeDeleted){
+    const iDofItem = itemToBeDeleted.guestId;
+    console.log('id of item to be deleted',iDofItem);
+    const guestList = this.state.bList;
+    const guestListCopy = [...guestList];
+
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.guestId === id);
+      arr.splice(objWithIdIndex, 1);
+      return arr;
+    }
+
+    removeObjectWithId(guestListCopy, iDofItem);
+    this.setState({
+      bList: guestListCopy
+    })
+
+    console.log(this.state.bList);
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteGuest/${iDofItem}`, myInit)
+    .then(
+      this.setState({
+        bList: guestListCopy
+      })
+    )
   }
 
   render() {
@@ -185,7 +219,7 @@ export default class GuestListManager extends React.Component {
 
               <ul className="list-group mb-5 overflow-control">
 
-                <GuestList gList={this.state.bList} />
+                <GuestList gList={this.state.bList} delete={this.deleteGuest}/>
                 {/* <li className="list-group-item">
 
                   <h6>Hana Liu, friendo</h6>

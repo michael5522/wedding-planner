@@ -457,6 +457,37 @@ app.delete('/api/deleteWeddingCheckListItem/:itemId', (req, res) => {
     });
 });
 
+//feature 10 user can delete an item from guest-list
+app.delete('/api/deleteGuest/:personId', (req, res) => {
+  const personID = parseInt(req.params.personId);
+  console.log(personID);
+  const params = [personID];
+
+  const sql = `
+  delete from "guestListManager"
+  where "guestId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${personID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
