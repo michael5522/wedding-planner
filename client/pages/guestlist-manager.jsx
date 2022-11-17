@@ -53,16 +53,32 @@ export default class GuestListManager extends React.Component {
       },
       body: JSON.stringify(newItem)
     };
+
+    function compareRelationship(a, b) {
+      console.log('1',a.guestRelationship,'2', b.guestRelationship)
+      if (a.guestRelationship > b.guestRelationship) {
+        return 1;
+      } else if (a.guestRelationship < b.guestRelationship) {
+        return -1;
+      }
+      return 0;
+    }
+
+
     fetch('api/GuestListAddEntry', myInit)
       .then(res => res.json())
-      .then(data =>
+      .then(data =>{
+        const newList = guestListCopy.concat(data);
+        newList.sort(compareRelationship);
+        console.log('this is the lateest list', newList)
         this.setState({
-          bList: guestListCopy.concat(data),
+          bList: newList,
           guestFirstName: '',
           guestLastName: '',
           guestEmail: '',
           guestRelationship: ''
-        })
+          })
+        }
       );
   }
 
@@ -115,7 +131,6 @@ export default class GuestListManager extends React.Component {
   }
 
   render() {
-    console.log('this state current', this.state)
     if (this.state.gettingData) {
       // console.log('hit 1st run returning null going to component did mount')
       return null;
@@ -220,11 +235,6 @@ export default class GuestListManager extends React.Component {
               <ul className="list-group mb-5 overflow-control">
 
                 <GuestList gList={this.state.bList} delete={this.deleteGuest}/>
-                {/* <li className="list-group-item">
-
-                  <h6>Hana Liu, friendo</h6>
-                  <h6 className="text-muted font-italic">michekl@gmaio.com</h6>
-                </li> */}
 
               </ul>
             </div>
