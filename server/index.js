@@ -426,6 +426,37 @@ app.delete('/api/deleteBudgetItem/:itemId', (req, res) => {
     });
 });
 
+//feature 10 user can delete an item from wedding checklist
+app.delete('/api/deleteWeddingCheckListItem/:itemId', (req, res) => {
+  const checkListID = parseInt(req.params.itemId);
+  console.log(checkListID);
+  const params = [checkListID];
+
+  const sql = `
+  delete from "weddingCheckList"
+  where "checkListId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${checkListID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

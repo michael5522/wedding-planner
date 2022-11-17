@@ -134,19 +134,8 @@ export default class Budget extends React.Component {
 
 
           <div className="row">
-            <div className="col">
-              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">Item List</span>
-                <span className="badge badge-secondary">$</span>
-              </h4>
 
-              <ul className="list-group mb-2">
-
-                <TodoList todos={this.state.bList} delete={this.deleteItem}/>
-
-              </ul>
-            </div>
-            <div className="col">
+            <div className="col-12 col-md-6">
 
               <form className="w-100" onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -184,6 +173,20 @@ export default class Budget extends React.Component {
               </form>
 
             </div>
+
+            <div className="col-12 col-md-6">
+              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
+                <span className="text-muted">Item List</span>
+                <span className="badge badge-secondary">#</span>
+              </h4>
+
+              <ul className="list-group mb-2">
+
+                <TodoList todos={this.state.bList} delete={this.deleteItem}/>
+
+              </ul>
+            </div>
+
           </div>
         </section>
 

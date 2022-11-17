@@ -15,6 +15,7 @@ export default class WeddingChecklist extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount() {
@@ -66,6 +67,36 @@ export default class WeddingChecklist extends React.Component {
         })
       }
     );
+  }
+
+  deleteItem(itemToBeDeleted) {
+    const iDofItem = itemToBeDeleted.checkListId;
+    console.log(iDofItem);
+    const weddingCheckList = this.state.bList;
+    const weddingCheckListCopy = [...weddingCheckList];
+
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.checkListId === id);
+      arr.splice(objWithIdIndex, 1);
+      return arr;
+    }
+
+    removeObjectWithId(weddingCheckListCopy, iDofItem);
+
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteWeddingCheckListItem/${iDofItem}`, myInit)
+      .then(
+        this.setState({
+          bList: weddingCheckListCopy
+        })
+      )
+
   }
 
   handleSubmit(event) {
@@ -155,7 +186,7 @@ export default class WeddingChecklist extends React.Component {
 
               <ul className="list-group mb-5 overflow-control">
 
-                <TodoListWeddingCheckList todos={this.state.bList} />
+                <TodoListWeddingCheckList todos={this.state.bList} delete={this.deleteItem}/>
 
               </ul>
             </div>
