@@ -393,7 +393,38 @@ app.delete('/api/deleteFoodItem/:foodId', (req, res)=>{
         error: 'An unexpected error occured.'
       });
     });
-})
+});
+
+//feature 10 user can delete an item from foodlist
+app.delete('/api/deleteBudgetItem/:itemId', (req, res) => {
+  const budgetID = parseInt(req.params.itemId);
+  console.log(budgetID);
+  const params = [budgetID];
+
+  const sql = `
+  delete from "budgeter"
+  where "itemId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${budgetID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
 
 app.use(errorMiddleware);
 

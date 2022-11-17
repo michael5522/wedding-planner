@@ -15,6 +15,7 @@ export default class Budget extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount(){
@@ -80,6 +81,37 @@ export default class Budget extends React.Component {
     this.addToBudget(newItem);
   }
 
+  deleteItem(itemToBeDeleted) {
+    const iDofItem = itemToBeDeleted.itemId;
+    console.log(iDofItem);
+    const budgetList = this.state.bList;
+    const budgetListCopy = [...budgetList];
+
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.itemId === id);
+      arr.splice(objWithIdIndex, 1);
+      return arr;
+    }
+
+    removeObjectWithId(budgetListCopy, iDofItem);
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteBudgetItem/${iDofItem}`, myInit)
+      .then(
+        this.setState({
+          bList: budgetListCopy
+        })
+      )
+
+
+
+  }
+
   render() {
 
     if(this.state.gettingData){
@@ -110,7 +142,7 @@ export default class Budget extends React.Component {
 
               <ul className="list-group mb-2">
 
-                <TodoList todos={this.state.bList} />
+                <TodoList todos={this.state.bList} delete={this.deleteItem}/>
 
               </ul>
             </div>
