@@ -49,9 +49,9 @@ export default class Menu extends React.Component {
                 <a href="#weddingchecklist" className="card mb-4 box-shadow border rounded">
                   <img className="card-img-top img-fluid" src="/images/happy.jpeg" alt="Card image cap" />
                   <div className="card-body padding-0-for-card-body">
-                    <h5 className="card-title mb-0">Wedding Checklist</h5>
-                    <p className="card-text italic mb-1">A Wedding To-Do List!</p>
-                    <p className="card-text indent text-justify">Add. Remove. Update.Your wedding to-do list is what you make it.Easily update or change to fit your needs.</p>
+                    <h5 className="card-title mb-0">Wedding Timeline</h5>
+                    <p className="card-text italic mb-1">A Wedding arrangement of events!</p>
+                    <p className="card-text indent text-justify">Add. Remove. Your wedding timeline list is what you make it.Easily update or change to fit your needs.</p>
                   </div>
                 </a>
               </div>
