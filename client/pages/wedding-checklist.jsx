@@ -126,7 +126,7 @@ export default class WeddingChecklist extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Wedding TimeLine</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Wedding TimeLine</h3>
           <p className="text-center mb-2">
             Please fill out your Timeline below!
           </p>
@@ -170,7 +170,7 @@ export default class WeddingChecklist extends React.Component {
                 </div>
 
                 <div className="d-flex mt-4">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-secondary btn-block">
                     Add to the List
                   </button>
                 </div>

@@ -126,7 +126,7 @@ export default class Budget extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Budget Manager</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Budget Manager</h3>
           <p className="text-center mb-2">
             Please fill out your budget below!
           </p>
@@ -166,7 +166,7 @@ export default class Budget extends React.Component {
                     className="form-control bg-light" />
                 </div>
                 <div className="d-flex ">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-secondary btn-block">
                     Add to List
                   </button>
                 </div>

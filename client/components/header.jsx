@@ -28,10 +28,10 @@ export default class Header extends React.Component {
               <div className="col py-2 text-muted">
                 A-List Wedding
               </div>
-              <a className="text-muted" href="#login">
+              <a className="btn btn-light text-muted" href="#login">
                 Login
               </a>
-              <a className="ml-2 text-muted" href="#register">
+              <a className="btn btn-light text-muted" href="#register">
                 Register
               </a>
             </div>

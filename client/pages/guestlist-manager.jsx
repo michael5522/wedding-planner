@@ -143,7 +143,7 @@ export default class GuestListManager extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Guest List Manager</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Guest List Manager</h3>
           <p className="text-center mb-2">
             Fill out your guest information below!
           </p>
@@ -218,7 +218,7 @@ export default class GuestListManager extends React.Component {
                 </div>
 
                 <div className="d-flex mt-2 mb-4">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-secondary btn-block">
                     Add to the List
                   </button>
                 </div>
