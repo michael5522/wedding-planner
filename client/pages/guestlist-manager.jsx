@@ -229,7 +229,7 @@ export default class GuestListManager extends React.Component {
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
                 <span className="text-muted">Guest List</span>
-                <span className="badge badge-secondary">#</span>
+                <span><i className="fas fa-phone text-muted pe-2 mr-2" /></span>
               </h4>
 
               <ul className="list-group mb-5 overflow-control">

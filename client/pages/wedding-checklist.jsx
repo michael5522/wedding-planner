@@ -181,7 +181,7 @@ export default class WeddingChecklist extends React.Component {
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
                 <span className="text-muted">Timeline</span>
-                <span className="badge badge-secondary">Tasks</span>
+                <span><i className="fas fa-route text-muted pe-2 mr-2" /></span>
               </h4>
 
               <ul className="list-group mb-5 overflow-control">
