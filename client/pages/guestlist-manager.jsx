@@ -212,7 +212,7 @@ export default class GuestListManager extends React.Component {
                     <option value="Close relative">Close relative</option>
                     <option value="Relative">Relative</option>
                     <option value="Close friend">Close friend</option>
-                    <option value="Friend">friend</option>
+                    <option value="Friend">Friend</option>
                     <option value="Misc">Misc</option>
                   </select>
                 </div>

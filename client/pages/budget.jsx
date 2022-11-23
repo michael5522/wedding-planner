@@ -140,7 +140,7 @@ export default class Budget extends React.Component {
               <form className="w-100" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="item" className="form-label">
-                    Add an Item:
+                    Add an Category:
                   </label>
                   <input
                     required
@@ -180,7 +180,7 @@ export default class Budget extends React.Component {
                 <span><i className="fas fa-balance-scale-left text-muted pe-2 mr-2" /></span>
               </h4>
 
-              <ul className="list-group mb-2">
+              <ul className="list-group mb-2 overflow-control">
 
                 <TodoList todos={this.state.bList} delete={this.deleteItem}/>
 
