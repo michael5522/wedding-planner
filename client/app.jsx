@@ -11,6 +11,7 @@ import Faq from './pages/faq';
 import Budget from './pages/budget';
 import WeddingChecklist from './pages/wedding-checklist';
 import GuestListManager from './pages/guestlist-manager';
+import CateringList from './pages/wedding-catering-list'
 import { parseRoute } from './lib';
 
 export default class App extends React.Component {
@@ -49,7 +50,9 @@ export default class App extends React.Component {
   }
 
   handleSignOut() {
+    console.log('handle sign out trigger hereeeeeeeee');
     window.localStorage.removeItem('react-context-jwt');
+    location.hash = '#';
     this.setState({ user: null });
   }
 
@@ -76,6 +79,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'guestlist') {
       return <GuestListManager />;
+    }
+    if (route.path === 'cateringlist'){
+      return <CateringList />
     }
     return <NotFound />;
   }

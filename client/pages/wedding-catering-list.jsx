@@ -1,16 +1,15 @@
 /* eslint-disable */
 import React from 'react';
 import AppContext from '../lib/app-context';
-import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
+import WeddingCateringList from '../components/wedding-checklist-catering-list';
 
-
-export default class WeddingChecklist extends React.Component {
+export default class CateringList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkListToDo: '',
-      checkListCategory: '',
-      bList: [],
+      foodItem: '',
+      foodCategory: '',
+      foodList: [],
       gettingData: true
     };
     this.handleChange = this.handleChange.bind(this);
@@ -25,11 +24,11 @@ export default class WeddingChecklist extends React.Component {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
     }
-    fetch('/api/weddingCheckListUser', myInit)
+    fetch('/api/foodListManagerListByUser', myInit)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          bList: data,
+          foodList: data,
           gettingData: false
         }));
   }
@@ -40,9 +39,9 @@ export default class WeddingChecklist extends React.Component {
     this.setState({ [name]: value });
   }
 
-  addToWeddingChecklist(newItem) {
-    const budgetList = this.state.bList;
-    const budgetListCopy = [...budgetList];
+  addToFoodList(newItem) {
+    const foodList = this.state.foodList;
+    const foodListCopy = [...foodList];
     const myInit = {
       method: 'POST',
       headers: {
@@ -52,36 +51,57 @@ export default class WeddingChecklist extends React.Component {
       body: JSON.stringify(newItem)
     };
 
-    function compareNumbers(a, b) {
-      return a.checkListCategory[0] - b.checkListCategory[0];
+    function compareFoodCategory(a,b){
+      // console.log('1',a.foodCategory,'2', b.foodCategory)
+      if(a.foodCategory > b.foodCategory){
+        return 1;
+      }else if (a.foodCategory < b.foodCategory){
+        return -1;
+      }
+      return 0;
     }
-    fetch('/api/weddingCheckListAdd', myInit)
+
+    fetch('/api/addToFoodList', myInit)
       .then(res => res.json())
       .then(data => {
-        const newList = this.state.bList.concat(data);
-        newList.sort(compareNumbers);
+        const newList = foodListCopy.concat(data);
+        newList.sort(compareFoodCategory);
+        console.log('this is the latest list',newList)
         this.setState({
-          bList: newList,
-          checkListToDo: '',
-          checkListCategory: '',
+          foodList: newList,
+          foodItem: '',
+          foodCategory: '',
         })
       }
-    );
+      );
   }
 
-  deleteItem(itemToBeDeleted) {
-    const iDofItem = itemToBeDeleted.checkListId;
+  handleSubmit(event) {
+    event.preventDefault();
+    // console.log('handle submit ------it is a handle submit of the form inside wedding checklist');
+    // console.log('handle submit -------inside handle submit', this.state);
+
+    const newItem = {
+      foodItem: this.state.foodItem,
+      foodCategory: this.state.foodCategory
+    };
+    console.log('new itammm', newItem)
+    this.addToFoodList(newItem);
+  }
+
+  deleteItem(itemToBeDeleted){
+    const iDofItem = itemToBeDeleted.foodId;
     console.log(iDofItem);
-    const weddingCheckList = this.state.bList;
-    const weddingCheckListCopy = [...weddingCheckList];
+    const foodList = this.state.foodList;
+    const foodListCopy = [...foodList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.checkListId === id);
+      const objWithIdIndex = arr.findIndex((obj) => obj.foodId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
 
-    removeObjectWithId(weddingCheckListCopy, iDofItem);
+    removeObjectWithId(foodListCopy, iDofItem);
 
     const myInit = {
       method: 'DELETE',
@@ -90,32 +110,23 @@ export default class WeddingChecklist extends React.Component {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
     };
-    fetch(`/api/deleteWeddingCheckListItem/${iDofItem}`, myInit)
+    fetch(`/api/deleteFoodItem/${iDofItem}`, myInit)
       .then(
         this.setState({
-          bList: weddingCheckListCopy
+          foodList: foodListCopy
         })
       )
-
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist');
-    // console.log('inside handle submit', this.state);
-
-    const newItem = {
-      checkListToDo: this.state.checkListToDo,
-      checkListCategory: this.state.checkListCategory
-    };
-    console.log('new itammm',newItem)
-    this.addToWeddingChecklist(newItem);
+    // this.setState({
+    //   foodList: foodListCopy
+    // });
+    // console.log('answer????',foodListCopy)
   }
 
   render() {
     // console.log(this.state)
+
     if (this.state.gettingData) {
-      console.log('hit 1st run returning null going to component did mount')
+      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;
@@ -126,9 +137,9 @@ export default class WeddingChecklist extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Wedding TimeLine</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Wedding Catering List</h3>
           <p className="text-center mb-2">
-            Please fill out your Timeline below!
+            Please list your food requirements below!
           </p>
           <a className="d-flex justify-content-center btn btn-outline-secondary mb-3" href="#menu"> Return to Menu</a>
 
@@ -139,33 +150,33 @@ export default class WeddingChecklist extends React.Component {
               <form className="w-100" onSubmit={handleSubmit}>
 
                 <div className="mb-3 mt-3">
-                  <label htmlFor="checkListToDo" className="form-label">
-                    Add to Timeline:
+                  <label htmlFor="foodItem" className="form-label">
+                    Add to Food List:
                   </label>
                   <input
                     required
                     autoFocus
-                    id="checkListToDo"
+                    id="foodItem"
                     type="text"
-                    name="checkListToDo"
-                    value={this.state.checkListToDo}
+                    name="foodItem"
+                    value={this.state.foodItem}
                     onChange={handleChange}
                     className="form-control bg-light" />
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="checkListCategory" className="form-label">
+                  <label htmlFor="foodCategory" className="form-label">
                     Category:
                   </label>
-                  <br/>
-                  <select  name="checkListCategory" value={this.state.checkListCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
-                    <option  value="" disabled>Select Category here</option>
-                    <option value="1. &nbsp;&nbsp;Day of Wedding">Day Of Wedding</option>
-                    <option value="2. &nbsp;&nbsp;One week to go">1 Week to go</option>
-                    <option value="3. &nbsp;&nbsp;One month to go">1 Month to go</option>
-                    <option value="4. &nbsp;&nbsp;Three month to go">3 Month to go</option>
-                    <option value="5. &nbsp;&nbsp;Half Year to go">6 Month to go</option>
-                    <option value="6. &nbsp;&nbsp;One Year+ to go">1 Year plus to go</option>
+                  <br />
+                  <select name="foodCategory" value={this.state.foodCategory} onChange={handleChange} className="form-select form-control mb-3 bg-light show-tick" required>
+                    <option value="" disabled>Select Category here</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Protien Foods">Protein Foods</option>
+                    <option value="Sweets">Sweets</option>
+                    <option value="Vegetables">Vegetables</option>
                   </select>
                 </div>
 
@@ -180,14 +191,12 @@ export default class WeddingChecklist extends React.Component {
 
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">Timeline</span>
-                <span><i className="fas fa-route text-muted pe-2 mr-2" /></span>
+                <span className="text-muted">Food List</span>
+                <span><i className="fas fa-utensils text-muted pe-2 mr-2" /></span>
               </h4>
 
               <ul className="list-group mb-5 overflow-control">
-
-                <TodoListWeddingCheckList todos={this.state.bList} delete={this.deleteItem}/>
-
+                <WeddingCateringList todos={this.state.foodList} delete={this.deleteItem}/>
               </ul>
             </div>
 

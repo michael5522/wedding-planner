@@ -15,6 +15,7 @@ export default class Budget extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount(){
@@ -80,6 +81,37 @@ export default class Budget extends React.Component {
     this.addToBudget(newItem);
   }
 
+  deleteItem(itemToBeDeleted) {
+    const iDofItem = itemToBeDeleted.itemId;
+    console.log(iDofItem);
+    const budgetList = this.state.bList;
+    const budgetListCopy = [...budgetList];
+
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.itemId === id);
+      arr.splice(objWithIdIndex, 1);
+      return arr;
+    }
+
+    removeObjectWithId(budgetListCopy, iDofItem);
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteBudgetItem/${iDofItem}`, myInit)
+      .then(
+        this.setState({
+          bList: budgetListCopy
+        })
+      )
+
+
+
+  }
+
   render() {
 
     if(this.state.gettingData){
@@ -94,7 +126,7 @@ export default class Budget extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Budget Manager</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Budget Manager</h3>
           <p className="text-center mb-2">
             Please fill out your budget below!
           </p>
@@ -102,24 +134,13 @@ export default class Budget extends React.Component {
 
 
           <div className="row">
-            <div className="col">
-              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">Item List</span>
-                <span className="badge badge-secondary">$</span>
-              </h4>
 
-              <ul className="list-group mb-2">
-
-                <TodoList todos={this.state.bList} />
-
-              </ul>
-            </div>
-            <div className="col">
+            <div className="col-12 col-md-6">
 
               <form className="w-100" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="item" className="form-label">
-                    Add an Item:
+                    Add an Category:
                   </label>
                   <input
                     required
@@ -145,13 +166,27 @@ export default class Budget extends React.Component {
                     className="form-control bg-light" />
                 </div>
                 <div className="d-flex ">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-secondary btn-block">
                     Add to List
                   </button>
                 </div>
               </form>
 
             </div>
+
+            <div className="col-12 col-md-6">
+              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
+                <span className="text-muted">Item List</span>
+                <span><i className="fas fa-balance-scale-left text-muted pe-2 mr-2" /></span>
+              </h4>
+
+              <ul className="list-group mb-2 overflow-control">
+
+                <TodoList todos={this.state.bList} delete={this.deleteItem}/>
+
+              </ul>
+            </div>
+
           </div>
         </section>
 

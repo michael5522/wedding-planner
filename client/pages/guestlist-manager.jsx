@@ -17,6 +17,7 @@ export default class GuestListManager extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteGuest = this.deleteGuest.bind(this);
   }
 
   componentDidMount() {
@@ -52,16 +53,32 @@ export default class GuestListManager extends React.Component {
       },
       body: JSON.stringify(newItem)
     };
+
+    function compareRelationship(a, b) {
+      console.log('1',a.guestRelationship,'2', b.guestRelationship)
+      if (a.guestRelationship > b.guestRelationship) {
+        return 1;
+      } else if (a.guestRelationship < b.guestRelationship) {
+        return -1;
+      }
+      return 0;
+    }
+
+
     fetch('api/GuestListAddEntry', myInit)
       .then(res => res.json())
-      .then(data =>
+      .then(data =>{
+        const newList = guestListCopy.concat(data);
+        newList.sort(compareRelationship);
+        console.log('this is the lateest list', newList)
         this.setState({
-          bList: guestListCopy.concat(data),
+          bList: newList,
           guestFirstName: '',
           guestLastName: '',
           guestEmail: '',
           guestRelationship: ''
-        })
+          })
+        }
       );
   }
 
@@ -80,8 +97,40 @@ export default class GuestListManager extends React.Component {
     this.addToGuestListManager(newItem);
   }
 
+  deleteGuest(itemToBeDeleted){
+    const iDofItem = itemToBeDeleted.guestId;
+    console.log('id of item to be deleted',iDofItem);
+    const guestList = this.state.bList;
+    const guestListCopy = [...guestList];
+
+    function removeObjectWithId(arr, id) {
+      const objWithIdIndex = arr.findIndex((obj) => obj.guestId === id);
+      arr.splice(objWithIdIndex, 1);
+      return arr;
+    }
+
+    removeObjectWithId(guestListCopy, iDofItem);
+    this.setState({
+      bList: guestListCopy
+    })
+
+    console.log(this.state.bList);
+    const myInit = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      }
+    };
+    fetch(`/api/deleteGuest/${iDofItem}`, myInit)
+    .then(
+      this.setState({
+        bList: guestListCopy
+      })
+    )
+  }
+
   render() {
-    console.log('this state current', this.state)
     if (this.state.gettingData) {
       // console.log('hit 1st run returning null going to component did mount')
       return null;
@@ -94,7 +143,7 @@ export default class GuestListManager extends React.Component {
 
         <section>
           <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-primary fw-bold">Guest List Manager</h3>
+          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Guest List Manager</h3>
           <p className="text-center mb-2">
             Fill out your guest information below!
           </p>
@@ -163,13 +212,13 @@ export default class GuestListManager extends React.Component {
                     <option value="Close relative">Close relative</option>
                     <option value="Relative">Relative</option>
                     <option value="Close friend">Close friend</option>
-                    <option value="Friend">friend</option>
+                    <option value="Friend">Friend</option>
                     <option value="Misc">Misc</option>
                   </select>
                 </div>
 
                 <div className="d-flex mt-2 mb-4">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-secondary btn-block">
                     Add to the List
                   </button>
                 </div>
@@ -180,17 +229,12 @@ export default class GuestListManager extends React.Component {
             <div className="col-12 col-md-6">
               <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
                 <span className="text-muted">Guest List</span>
-                <span className="badge badge-secondary">#</span>
+                <span><i className="fas fa-phone text-muted pe-2 mr-2" /></span>
               </h4>
 
               <ul className="list-group mb-5 overflow-control">
 
-                <GuestList gList={this.state.bList} />
-                {/* <li className="list-group-item">
-
-                  <h6>Hana Liu, friendo</h6>
-                  <h6 className="text-muted font-italic">michekl@gmaio.com</h6>
-                </li> */}
+                <GuestList gList={this.state.bList} delete={this.deleteGuest}/>
 
               </ul>
             </div>

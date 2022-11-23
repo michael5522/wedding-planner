@@ -319,6 +319,175 @@ app.post('/api/GuestListAddEntry', (req, res) => {
     .catch(err => next(err));
 });
 
+//feature 8 sort by USDER ID for BUDGET
+app.get('/api/foodListManagerListByUser', (req, res) => {
+  const userId = req.user.userId;
+  console.log('ola userID from foodlist by user', userId)
+  const sql = `
+  select *
+  from "foodListManager"
+  where "userId" = $1
+  order by "foodCategory" asc
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurreddd'
+      });
+    });
+});
+
+//feature 8 user can add new entry into food list
+app.post('/api/addToFoodList', (req, res, next) => {
+  const userId = req.user.userId;
+  console.log('post this is in the adding into food list', userId);
+  const { foodItem, foodCategory } = req.body;
+  if (!foodItem || !foodCategory) {
+    throw new ClientError(400, 'food name  and food category are required fields');
+  }
+  const sql = `
+  insert into "foodListManager"("foodName", "foodCategory", "userId")
+  values ($1,$2,$3)
+  returning *
+  `
+  const params = [foodItem, foodCategory, userId];
+  db.query(sql, params)
+    .then(result => {
+      const item = result.rows;
+      res.status(201).json(item);
+    })
+    .catch(err => next(err));
+});
+
+//feature 9 user can delete an item from foodlist
+app.delete('/api/deleteFoodItem/:foodId', (req, res)=>{
+  const foodID = parseInt(req.params.foodId);
+  console.log(foodID);
+  const params = [foodID];
+
+  const sql = `
+  delete from "foodListManager"
+  where "foodId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if(!solution){
+        res.status(404).json({
+          error: `${foodID} cannot be found`
+        });
+      }else{
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
+//feature 10 user can delete an item from foodlist
+app.delete('/api/deleteBudgetItem/:itemId', (req, res) => {
+  const budgetID = parseInt(req.params.itemId);
+  console.log(budgetID);
+  const params = [budgetID];
+
+  const sql = `
+  delete from "budgeter"
+  where "itemId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${budgetID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
+//feature 10 user can delete an item from wedding checklist
+app.delete('/api/deleteWeddingCheckListItem/:itemId', (req, res) => {
+  const checkListID = parseInt(req.params.itemId);
+  console.log(checkListID);
+  const params = [checkListID];
+
+  const sql = `
+  delete from "weddingCheckList"
+  where "checkListId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${checkListID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
+//feature 10 user can delete an item from guest-list
+app.delete('/api/deleteGuest/:personId', (req, res) => {
+  const personID = parseInt(req.params.personId);
+  console.log(personID);
+  const params = [personID];
+
+  const sql = `
+  delete from "guestListManager"
+  where "guestId" = $1
+  returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const solution = result.rows[0];
+      if (!solution) {
+        res.status(404).json({
+          error: `${personID} cannot be found`
+        });
+      } else {
+        res.sendStatus(204)
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
