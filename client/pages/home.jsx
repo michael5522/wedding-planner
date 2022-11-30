@@ -46,11 +46,11 @@ import Carousel from '../components/carousel';
 //   );
 // }
 const pokedex = [
-  { url: 'https://th.wallhaven.cc/small/76/76z73e.jpg', number: 0 },
-  { url: 'https://th.wallhaven.cc/small/43/43xk86.jpg', number: 1 },
-  { url: 'https://th.wallhaven.cc/small/x1/x1wx5v.jpg', number: 2 },
-  { url: 'https://th.wallhaven.cc/small/9m/9m6jo1.jpg', number: 3 },
-  { url: 'https://th.wallhaven.cc/small/83/83m7yy.jpg', number: 4 }
+  { url: 'https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80', number: 0 },
+  { url: 'https://images.unsplash.com/photo-1525441273400-056e9c7517b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80', number: 1 },
+  { url: 'https://images.unsplash.com/reserve/xd45Y326SvKzSR3Nanc8_MRJ_8125-1.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80', number: 2 },
+  { url: 'https://images.unsplash.com/photo-1624067078399-be29c52a2b12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80', number: 3 },
+  { url: 'https://images.unsplash.com/photo-1523974715800-1f7cef033969?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80', number: 4 }
 ];
 
 export default class Home extends React.Component {
@@ -70,7 +70,7 @@ export default class Home extends React.Component {
             <h2>Wedding Planning</h2>
             <h2>Assistant</h2>
             <h5 className="mb-3">Get started with planning</h5>
-            <a href="#register" className="btn btn-outline-secondary mt-2" role="button">{homePageButton}</a>
+            <a href="#register" className="btn btn-outline-secondary mt-2 splash-button" role="button">{homePageButton}</a>
 
           </div>
           <div className="col d-flex align-items-center justify-content-center">
@@ -78,6 +78,30 @@ export default class Home extends React.Component {
             <Carousel poke={pokedex} />
           </div>
         </div>
+
+        <div className="row custom-row">
+          <div className="col d-flex align-items-center justify-content-center">
+            <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzE1fHx3ZWRkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" className="custom-row-photo" alt="Responsive image" />
+          </div>
+
+          <div className="col">
+            <div>
+              <h3 className="mb-0">Redefining the</h3>
+              <h3 className="mb-0">Event Planning</h3>
+              <h3 className="mb-10">Experience</h3>
+              <p className="mt-3">
+                Weddings are full of love, dancing and…planning. There’s a lot of decisions and steps, but with our checklist, you can make sure you have it all! <br />
+                Inside the included tools, <strong>you can set your budget.</strong> It’s highly advised this be one of the very first priorities. Why? It’ll set the precedent for everything else.<br />
+                You may also <strong>put together the guest list. </strong>Why do you have to do this early? To know approximately what sized wedding venue you’ll be booking! <br />
+                <strong>Hiring a planner? </strong>Start with them early on; they have the experience to make the overall process easier.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
         <div className="row">
           <h3>Example Benefits:</h3>
         </div>

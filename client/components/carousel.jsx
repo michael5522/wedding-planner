@@ -22,7 +22,7 @@ class Carousel extends React.Component {
     }
     clearInterval(this.state.status);
     this.setState({
-      status: setInterval(this.autoTimer, 5000)
+      status: setInterval(this.autoTimer, 8000)
     });
   }
 
