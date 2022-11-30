@@ -1,5 +1,6 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
+import Carousel from '../components/carousel';
 
 // export default function Home(props) {
 //   return (
@@ -44,6 +45,13 @@ import AppContext from '../lib/app-context';
 //     </div>
 //   );
 // }
+const pokedex = [
+  { url: 'https://th.wallhaven.cc/small/76/76z73e.jpg', number: 0 },
+  { url: 'https://th.wallhaven.cc/small/43/43xk86.jpg', number: 1 },
+  { url: 'https://th.wallhaven.cc/small/x1/x1wx5v.jpg', number: 2 },
+  { url: 'https://th.wallhaven.cc/small/9m/9m6jo1.jpg', number: 3 },
+  { url: 'https://th.wallhaven.cc/small/83/83m7yy.jpg', number: 4 }
+];
 
 export default class Home extends React.Component {
   render() {
@@ -65,8 +73,9 @@ export default class Home extends React.Component {
             <a href="#register" className="btn btn-outline-secondary mt-2" role="button">{homePageButton}</a>
 
           </div>
-          <div className="col d-flex align-items-center">
-            <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid" alt="Responsive image" />
+          <div className="col d-flex align-items-center justify-content-center">
+            {/* <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid" alt="Responsive image" /> */}
+            <Carousel poke={pokedex} />
           </div>
         </div>
         <div className="row">
@@ -93,6 +102,7 @@ export default class Home extends React.Component {
             <p className="text-justify"><br />Stay on top of yours spending - keep track of your total budget, prices, deposits, and any outstanding fees</p>
           </div>
         </div>
+
       </div>
     );
   }
