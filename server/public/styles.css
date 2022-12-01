@@ -50,15 +50,39 @@ h6 {
   color: green;
   font-size: 17px;
   padding: 13px 36px;
+  margin-bottom: 5px;
 }
 
 /* custom area for redefining the event planning experience */
 .custom-row {
-  height: 500px;
   background-color: lightcyan;
 }
 
 .custom-row-photo {
   border-radius: 5px 100px / 120px;
-  max-width: 60%;
+
+  /* height: 45vh; */
+}
+
+/* animation for cake */
+
+.img-hover-zoom {
+  height: 35vh;
+
+  /* Modify this according to your need */
+  overflow: hidden;
+
+  /* Removing this will break the effects */
+}
+
+.img-hover-zoom-blur img {
+  transition: transform 1s, filter 2s ease-in-out;
+  filter: blur(0.5px);
+  transform: scale(1.2);
+}
+
+/* The Transformation */
+.img-hover-zoom-blur:hover img {
+  filter: blur(0);
+  transform: scale(1);
 }
