@@ -86,3 +86,11 @@ h6 {
   filter: blur(0);
   transform: scale(1);
 }
+
+.custom-row-2 {
+  background-image: url("https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp");
+}
+
+.menu-top-margin {
+  margin-top: 25px;
+}
