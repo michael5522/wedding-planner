@@ -6,7 +6,7 @@ export default class Header extends React.Component {
     const { user, handleSignOut } = this.context;
     if (user != null) {
       return (
-        <header className="mb-5">
+        <header className="">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
               <div className="col py-2 text-muted">

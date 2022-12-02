@@ -64,24 +64,78 @@ export default class Home extends React.Component {
       homePageButton = 'Click to Start Now!';
     }
     return (
-      <div className="container">
-        <div className="row mb-2">
-          <div className="col-12 col-md-6">
-            <h2 className="mt-1">Online</h2>
-            <h2>Wedding Planning</h2>
-            <h2>Assistant</h2>
-            <h5 className="mb-3">Get started with planning</h5>
-            <a href="#register" className="btn btn-outline-secondary mt-2 splash-button" role="button">{homePageButton}</a>
-
-          </div>
-          <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-            {/* <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid" alt="Responsive image" /> */}
-            <Carousel poke={pokedex} />
+      <div>
+        <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center menu-background">
+          <div className="col-md-5 p-lg-5 mx-auto my-5">
+            <h2 className="display-4 font-weight-normal"> Online Wedding Planning Assistant</h2>
+            <p className="lead font-weight-normal"> Your success is our wish!</p>
           </div>
         </div>
+        <div className="container">
+          <div className="row mb-2">
+            <div className="col-12 col-md-6">
+              <h2 className="mt-1">Online</h2>
+              <h2>Wedding Planning</h2>
+              <h2>Assistant</h2>
+              <h5 className="mb-3">Get started with planning</h5>
+              <a href="#register" className="btn btn-outline-secondary mt-2 splash-button" role="button">{homePageButton}</a>
 
-        <MenuInfo />
+            </div>
+            <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
+              {/* <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid" alt="Responsive image" /> */}
+              <Carousel poke={pokedex} />
+            </div>
+          </div>
 
+          <MenuInfo />
+
+          <div className="row align-items-center justify-content-center custom-row-2 mt-1">
+            <h3>Example Benefits:</h3>
+          </div>
+          <div className="row custom-row-2">
+
+            <div className="col-md-4 d-flex align-items-stretch justify-content-center ">
+              <div className="card border-dark mb-3">
+                <div className="card-header">Guest List Manager</div>
+                <div className="card-body text-dark">
+                  <p className="card-text">Simplify address collection. <br />
+                    Whether you’re having a wedding shower, engagement party or dinner, our guest list manager will assemble all your guest info.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
+              <div className="card border-dark mb-3">
+                <div className="card-header">A Wedding To-Do List</div>
+                <div className="card-body text-dark">
+                  <p className="card-text">Add. Remove. Update. <br />
+                    Your wedding to-do list is what you make it.
+                    Easily update or change to fit your needs.</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* <div className="col-md-4 border rounded">
+            <h4>Budgeter</h4>
+            <h6 className="italic">Set up your Budget!</h6>
+            <p className="text-justify"><br />Stay on top of yours spending - keep track of your total budget, prices, deposits, and any outstanding fees</p>
+          </div> */}
+
+            <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
+              <div className="card border-dark mb-3">
+                <div className="card-header">Set up your Budget!</div>
+                <div className="card-body text-dark">
+                  <p className="card-text">Stay on top of yours spending -<br /> Keep track of your total budget, the prices of everything, and any further outstanding fees!</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        ola
         <div className="row align-items-center justify-content-center custom-row-2 mt-1">
           <h3>Example Benefits:</h3>
         </div>
@@ -126,8 +180,8 @@ export default class Home extends React.Component {
           </div>
 
         </div>
-
       </div>
+
     );
   }
 }
