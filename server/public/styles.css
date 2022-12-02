@@ -58,17 +58,9 @@ h6 {
   background-color: lightcyan;
 }
 
-.custom-row-photo {
-  border-radius: 5px 100px / 120px;
-
-  /* height: 45vh; */
-}
-
 /* animation for cake */
 
 .img-hover-zoom {
-  height: 35vh;
-
   /* Modify this according to your need */
   overflow: hidden;
 
@@ -82,6 +74,7 @@ h6 {
 }
 
 /* The Transformation */
+
 .img-hover-zoom-blur:hover img {
   filter: blur(0);
   transform: scale(1);
@@ -91,6 +84,6 @@ h6 {
   background-image: url("https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp");
 }
 
-.menu-top-margin {
-  margin-top: 25px;
+.image-size {
+  max-width: 60%;
 }

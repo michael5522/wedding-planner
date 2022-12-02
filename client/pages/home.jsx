@@ -82,12 +82,12 @@ export default class Home extends React.Component {
 
         <MenuInfo />
 
-        <div className="row align-items-center justify-content-center">
+        <div className="row align-items-center justify-content-center custom-row-2 mt-1">
           <h3>Example Benefits:</h3>
         </div>
         <div className="row custom-row-2">
 
-          <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
+          <div className="col-md-4 d-flex align-items-stretch justify-content-center ">
             <div className="card border-dark mb-3">
               <div className="card-header">Guest List Manager</div>
               <div className="card-body text-dark">
