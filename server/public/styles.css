@@ -100,4 +100,8 @@ h6 {
   .image-size {
     display: none;
   }
+
+  .menu-background {
+    display: none;
+  }
 }

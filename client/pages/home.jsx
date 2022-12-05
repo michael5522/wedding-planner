@@ -72,7 +72,7 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="row mb-2">
+          <div className="row mb-2 align-items-center justify-content-center">
             <div className="col-12 col-md-6">
               <h2 className="mt-1">Online</h2>
               <h2>Wedding Planning</h2>
@@ -90,7 +90,7 @@ export default class Home extends React.Component {
           <MenuInfo />
 
           <div className="row align-items-center justify-content-center custom-row-2 mt-1">
-            <h3>Example Benefits:</h3>
+            <h3>Example Features:</h3>
           </div>
           <div className="row custom-row-2">
 
