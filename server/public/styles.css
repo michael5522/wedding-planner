@@ -95,3 +95,9 @@ h6 {
   background-image: url("https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   opacity: 0.8;
 }
+
+@media (max-width: 629px) {
+  .image-size {
+    display: none;
+  }
+}

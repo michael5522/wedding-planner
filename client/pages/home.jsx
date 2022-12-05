@@ -117,12 +117,6 @@ export default class Home extends React.Component {
 
             </div>
 
-            {/* <div className="col-md-4 border rounded">
-            <h4>Budgeter</h4>
-            <h6 className="italic">Set up your Budget!</h6>
-            <p className="text-justify"><br />Stay on top of yours spending - keep track of your total budget, prices, deposits, and any outstanding fees</p>
-          </div> */}
-
             <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
               <div className="card border-dark mb-3">
                 <div className="card-header">Set up your Budget!</div>
@@ -135,51 +129,7 @@ export default class Home extends React.Component {
           </div>
 
         </div>
-        ola
-        <div className="row align-items-center justify-content-center custom-row-2 mt-1">
-          <h3>Example Benefits:</h3>
-        </div>
-        <div className="row custom-row-2">
 
-          <div className="col-md-4 d-flex align-items-stretch justify-content-center ">
-            <div className="card border-dark mb-3">
-              <div className="card-header">Guest List Manager</div>
-              <div className="card-body text-dark">
-                <p className="card-text">Simplify address collection. <br />
-                  Whether you’re having a wedding shower, engagement party or dinner, our guest list manager will assemble all your guest info.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
-            <div className="card border-dark mb-3">
-              <div className="card-header">A Wedding To-Do List</div>
-              <div className="card-body text-dark">
-                <p className="card-text">Add. Remove. Update. <br />
-                  Your wedding to-do list is what you make it.
-                  Easily update or change to fit your needs.</p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* <div className="col-md-4 border rounded">
-            <h4>Budgeter</h4>
-            <h6 className="italic">Set up your Budget!</h6>
-            <p className="text-justify"><br />Stay on top of yours spending - keep track of your total budget, prices, deposits, and any outstanding fees</p>
-          </div> */}
-
-          <div className="col-md-4 d-flex align-items-stretch justify-content-center menu-top-margin">
-            <div className="card border-dark mb-3">
-              <div className="card-header">Set up your Budget!</div>
-              <div className="card-body text-dark">
-                <p className="card-text">Stay on top of yours spending -<br /> Keep track of your total budget, the prices of everything, and any further outstanding fees!</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
 
     );
