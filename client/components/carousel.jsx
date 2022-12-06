@@ -38,7 +38,7 @@ class Carousel extends React.Component {
 
     return (
 
-      <div><img src={total[this.state.photo].url} className="rounded img-fluid" alt="Responsive image" /></div>
+      <div><img src={total[this.state.photo].url} className="rounded card-shadow img-fluid" alt="Responsive image" /></div>
 
     );
   }
