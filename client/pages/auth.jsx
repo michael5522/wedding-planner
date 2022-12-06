@@ -15,16 +15,16 @@ export default class AuthPage extends React.Component {
       ? 'Please sign in to continue'
       : 'Create an account to get started!';
     return (
-      <div className="row pt-5 align-items-center">
+      <div className="row pt-5 align-items-center custom-row-login-register">
         <div className="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4">
           <header className="text-center">
-            <h2 className="mb-2">
-              <i className="fa-solid fa-ring" />
+            <h2 className="mb-2 lustria-font">
+              {/* <i className="fa-solid fa-ring" /> */}
               A-List Wedding
             </h2>
-            <p className="text-muted mb-4">{welcomeMessage}</p>
+            <p className="text-muted mb-4 lustria-font italic">{welcomeMessage}</p>
           </header>
-          <div className="card p-3 ">
+          <div className="card p-3 card-shadow">
             <AuthForm
               key={route.path}
               action={route.path}

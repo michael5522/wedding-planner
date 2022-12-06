@@ -87,6 +87,14 @@ h6 {
   opacity: 0.8;
 }
 
+.custom-row-login-register {
+  background-image: url("https://img.freepik.com/free-vector/elegant-white-card-with-white-floral-decoration_1361-1269.jpg?w=2000&t=st=1669944773~exp=1669945373~hmac=580e5c9976e311c964b7a3cd77f44729815c362d151aad47de3eec38080c615b");
+  opacity: 0.8;
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .image-size {
   max-width: 60%;
 }
