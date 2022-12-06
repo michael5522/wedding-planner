@@ -65,7 +65,7 @@ export default class Home extends React.Component {
     }
     return (
       <div>
-        <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center menu-background">
+        <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center home-background">
           <div className="col-md-5 p-lg-5 mx-auto my-5">
             <h2 className="display-4 font-weight-normal lustria-font"> A-List Wedding Planning Services</h2>
             <p className="lead font-weight-normal lustria-font italic"> Your dream is our wish!</p>

@@ -99,7 +99,7 @@ h6 {
   max-width: 60%;
 }
 
-.menu-background {
+.home-background {
   background-image: url("https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   opacity: 0.8;
   background-repeat: no-repeat;
@@ -128,4 +128,21 @@ h6 {
 
 .lustria-font {
   font-family: Lustria, sans-serif;
+}
+
+.menu-background-fixed {
+  background-image: url("https://images.unsplash.com/photo-1525441273400-056e9c7517b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.menu-row {
+  background-color: rgb(2, 2, 2);
+}
+
+.menu-text {
+  color: whitesmoke;
+  opacity: 0.9;
 }
