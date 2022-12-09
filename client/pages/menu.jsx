@@ -19,6 +19,8 @@ export default class Menu extends React.Component {
           </div>
         </div>
 
+        <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
+
         <div className="album py-5 bg-light menu-background-fixed">
           <div className="container">
             <div className="row justify-content-center">
@@ -28,7 +30,7 @@ export default class Menu extends React.Component {
                   <img className="card-img-top img-fluid" src="/images/happy.jpeg" alt="Card image cap" />
                   <div className="card-body padding-0-for-card-body">
                     <h5 className="card-title mb-2 text-center lustria-font"><i className="far fa-map text-muted pe-2 mr-2" />FAQ</h5>
-                    <p className="card-text italic mb-1">Click here to quickstart guide!</p>
+                    <p className="card-text italic mb-1">Frequently asked Questions!</p>
                     <p className="card-text indent text-justify">Learn how to use this application. Anybody planning a wedding can take advantage of the easy-to-use interface that breaks wedding plans down into individual task checklists.</p>
                   </div>
                 </a>
@@ -78,10 +80,26 @@ export default class Menu extends React.Component {
                 </a>
               </div>
 
+              <div className="col-md-4 d-flex">
+                <a href="#guideline" className="card mb-4 box-shadow border rounded card-shadow border-dark">
+                  <img className="card-img-top img-fluid" src="/images/happy.jpeg" alt="Card image cap" />
+                  <div className="card-body padding-0-for-card-body">
+                    <h5 className="card-title mb-2 text-center lustria-font"><i className="fas fa-utensils text-muted pe-2 mr-2" />Wedding Planning Guide</h5>
+                    <p className="card-text italic mb-1">Click here for a clickstart guide!</p>
+                    <p className="card-text indent text-justify">This Guide will help you visualize what you need to do, and when to do it! We will help you walk though step by step and make it as easy as 1,2,3!</p>
+                  </div>
+                </a>
+              </div>
+
             </div>
           </div>
 
         </div>
+
+        {/* <div className="home-black p-4 mb-3 mt-0 d-flex  justify-content-center aligh-items-center container-fluid" /> */}
+        <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
+        <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
+
       </div>
     );
   }

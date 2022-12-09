@@ -152,6 +152,7 @@ h6 {
 
 .menu-row {
   background-color: rgb(2, 2, 2);
+  opacity: 0.8;
 }
 
 .menu-text {
@@ -169,9 +170,19 @@ h6 {
   opacity: 0.8;
 }
 
+.home-ultrabackground-9 {
+  background-color: rgb(247, 247, 247);
+  opacity: 0.9;
+}
+
+.home-ultrabackground-color {
+  background-color: rgb(247, 247, 247);
+}
+
 .home-black {
   background: black;
   color: white;
+  opacity: 0.8;
 }
 
 .home-card-background {
@@ -200,4 +211,12 @@ h6 {
     1px 1px 2px #000,
     1px -1px 0 #000,
     -1px -1px 0 #000;
+}
+
+.guideline-max-width {
+  max-width: 800px;
+}
+
+.img-seventy-five {
+  max-width: 80%;
 }
