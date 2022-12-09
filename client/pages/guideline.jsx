@@ -8,7 +8,7 @@ export default function Guideline(props) {
         <div className="col-md-5 p-lg-5 mx-auto my-5">
           <h1 className="display-4 font-weight-normal lustria-font menu-text">Wedding Guideline</h1>
           <p className="lead font-weight-normal lustria-font italic menu-text">General timeframes to follow!</p>
-          <a className="btn btn-outline-secondary lustria-font menu-text" href="#">Return Home</a>
+          <a className="btn btn-outline-secondary lustria-font menu-text" href="#menu">Return to Menu</a>
         </div>
       </div>
 
