@@ -26,12 +26,32 @@ a.card:hover {
   padding-top: 0;
 }
 
-.img-half {
-  max-width: 50%;
+.img-twenty {
+  max-width: 20%;
 }
 
 .img-twenty-five {
   max-width: 30%;
+}
+
+.img-thirty-five {
+  max-width: 35%;
+}
+
+.img-half {
+  max-width: 50%;
+}
+
+.img-fourty {
+  max-width: 40%;
+}
+
+.image-size {
+  max-width: 60%;
+}
+
+.img-seventy-five {
+  max-width: 80%;
 }
 
 .select:focus {
@@ -97,10 +117,6 @@ h6 {
   height: 90vh;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.image-size {
-  max-width: 60%;
 }
 
 .home-background {
@@ -221,18 +237,50 @@ h6 {
   max-width: 800px;
 }
 
-.img-seventy-five {
-  max-width: 80%;
-}
-
 .faq-background-fixed {
-  background-image: url("https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80");
+  background-image: url("https://images.pexels.com/photos/4466492/pexels-photo-4466492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   opacity: 0.9;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: top;
   background-attachment: fixed;
 }
 
 .blue-color {
   color: rgba(41, 202, 203, 0.8);
+}
+
+.guest-list-background-fixed {
+  background-image: url("https://images.unsplash.com/photo-1560145725-18e738a9a336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3053&q=80");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.wedding-catering-list-fixed {
+  background-image: url("https://images.unsplash.com/photo-1520245787685-fb1e6732fb76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.budget-fixed {
+  background-image: url("https://images.pexels.com/photos/1410226/pexels-photo-1410226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.wedding-checklist-fixed {
+  background-image: url("https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=1600;");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.form-control {
+  background-color: rgb(247, 247, 247));
 }

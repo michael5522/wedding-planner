@@ -14,11 +14,12 @@ export default function Faq(props) {
 
       <div className="home-ultrabackground-9 p-1 mb-0 mt-0 d-flex container-fluid" />
 
+      {/* <div className="faq-background-fixed mt-0"> */}
       <div className="faq-background-fixed mt-0">
         <div className="container">
 
           <section>
-            <img src="/images/faq.png" className="img-fluid img-twenty-five mx-auto d-block mb-4" alt="Responsive image" />
+            <img src="/images/faq.png" className="img-fluid img-thirty-five mx-auto d-block mb-4" alt="Responsive image" />
 
             <div className="row">
               <div className="col-md-6 col-lg-4 mb-4">
