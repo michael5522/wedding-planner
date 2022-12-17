@@ -19,13 +19,6 @@ export default class Budget extends React.Component {
   }
 
   componentDidMount(){
-    // fetch('/api/budgeter44')
-    //   .then(res => res.json())
-    //   .then(data =>
-    //     this.setState({
-    //       bList: data,
-    //       gettingData: false
-    //     }));
     const myInit = {
       method: 'GET',
       headers: {
@@ -71,13 +64,12 @@ export default class Budget extends React.Component {
   handleSubmit(event) {
 
     event.preventDefault();
-    // console.log('it is a register handle submit');
-    // console.log('inside handle submit', this.state);
+
     const newItem = {
       item: this.state.item,
       cost: this.state.cost
     };
-    // console.log('new itammm',newItem)
+
     this.addToBudget(newItem);
   }
 
@@ -115,7 +107,7 @@ export default class Budget extends React.Component {
   render() {
 
     if(this.state.gettingData){
-      console.log('hit 1st run returning null going to component did mount')
+
       return null;
     }
     const { user } = this.context;

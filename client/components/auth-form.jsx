@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 
 export default class AuthForm extends React.Component {
@@ -22,7 +21,6 @@ export default class AuthForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { action } = this.props;
-    console.log('it is a register handle submit');
     const req = {
       method: 'POST',
       headers: {
@@ -33,13 +31,9 @@ export default class AuthForm extends React.Component {
     fetch(`/api/auth/${action}`, req)
       .then(res => res.json())
       .then(result => {
-        console.log('auth result:', result);
-        console.log('token', result.token);
-        console.log('result.user', result.user);
         if (action === 'register') {
           window.location.hash = 'login';
         } else if (result.user && result.token) {
-          console.log('this is triggering!!1');
           this.props.onSignIn(result);
         }
       });
@@ -47,9 +41,7 @@ export default class AuthForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const { action } = this.props;
-    console.log('inside auth form', action);
     const { handleChange, handleSubmit } = this;
     const alternateActionHref = action === 'register'
       ? '#login'
@@ -65,7 +57,7 @@ export default class AuthForm extends React.Component {
         <form className="w-100" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label lustria-font">
-              <i className="fas fa-envelope fa-fw"></i>
+              <i className="fas fa-envelope fa-fw" />
               Email
             </label>
             <input
@@ -79,7 +71,7 @@ export default class AuthForm extends React.Component {
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="form-label lustria-font">
-              <i className="fas fa-key fa-fw"></i>
+              <i className="fas fa-key fa-fw" />
               Password
             </label>
             <input
@@ -107,8 +99,8 @@ export default class AuthForm extends React.Component {
         <form className="w-100" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label lustria-font">
-              <i className="fas fa-user fa-fw"></i>
-               First Name
+              <i className="fas fa-user fa-fw" />
+              First Name
             </label>
             <input
               required
@@ -122,7 +114,7 @@ export default class AuthForm extends React.Component {
 
           <div className="mb-3">
             <label htmlFor="lastName" className="form-label lustria-font">
-              <i className="fas fa-user fa-fw"></i>
+              <i className="fas fa-user fa-fw" />
               Last Name
             </label>
             <input
@@ -137,7 +129,7 @@ export default class AuthForm extends React.Component {
 
           <div className="mb-3">
             <label htmlFor="email" className="form-label lustria-font">
-              <i className="fas fa-envelope fa-fw"></i>
+              <i className="fas fa-envelope fa-fw" />
               Email
             </label>
             <input
@@ -152,7 +144,7 @@ export default class AuthForm extends React.Component {
 
           <div className="mb-3">
             <label htmlFor="password" className="form-label lustria-font">
-              <i className="fas fa-key fa-fw"></i>
+              <i className="fas fa-key fa-fw" />
               Password
             </label>
             <input

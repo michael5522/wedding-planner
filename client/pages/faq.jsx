@@ -14,7 +14,6 @@ export default function Faq(props) {
 
       <div className="home-ultrabackground-9 p-1 mb-0 mt-0 d-flex container-fluid" />
 
-      {/* <div className="faq-background-fixed mt-0"> */}
       <div className="faq-background-fixed mt-0">
         <div className="container">
 

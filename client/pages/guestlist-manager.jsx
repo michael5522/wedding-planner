@@ -38,7 +38,6 @@ export default class GuestListManager extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
@@ -84,8 +83,6 @@ export default class GuestListManager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist---------');
-    // console.log('inside handle submit', this.state);
 
     const newItem = {
       guestFirstName: this.state.guestFirstName,
@@ -93,7 +90,6 @@ export default class GuestListManager extends React.Component {
       guestEmail: this.state.guestEmail,
       guestRelationship: this.state.guestRelationship
     };
-    // console.log('new itammm', newItem)
     this.addToGuestListManager(newItem);
   }
 
@@ -132,7 +128,6 @@ export default class GuestListManager extends React.Component {
 
   render() {
     if (this.state.gettingData) {
-      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;
