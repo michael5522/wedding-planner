@@ -26,7 +26,7 @@ export default class Menu extends React.Component {
             <div className="row justify-content-center">
 
               <div className="col-md-4 d-flex">
-                <a href="#faq" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#faq" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="far fa-map pe-2 mr-2 fa-2x menu-text" />
                   </div>
@@ -39,7 +39,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="#guestlist" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#guestlist" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="fas fa-phone pe-2 mr-2 fa-2x menu-text" />
                   </div>
@@ -52,7 +52,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="#weddingchecklist" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#weddingchecklist" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="fas fa-route pe-2 mr-2 fa-2x menu-text" />
                   </div>
@@ -65,7 +65,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="#budgetlist" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#budgetlist" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="fas fa-balance-scale-left pe-2 mr-2 fa-2x menu-text" />
                   </div>
@@ -78,7 +78,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="#cateringlist" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#cateringlist" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="fas fa-utensils pe-2 mr-2 fa-2x menu-text" />
                   </div>
@@ -91,7 +91,7 @@ export default class Menu extends React.Component {
               </div>
 
               <div className="col-md-4 d-flex">
-                <a href="#guideline" className="card mb-4 border rounded card-shadow border-dark home-card-background">
+                <a href="#guideline" className="card mb-4 border rounded card-shadow border-dark home-card-background effect">
                   <div className="mx-auto mt-3 mb-3">
                     <i className="fas fa-hands-helping pe-2 mr-2 fa-2x menu-text" />
                   </div>

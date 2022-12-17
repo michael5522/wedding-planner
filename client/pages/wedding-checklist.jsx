@@ -147,7 +147,7 @@ export default class WeddingChecklist extends React.Component {
 
                     <div className="mb-3 mt-3">
                       <label htmlFor="checkListToDo" className="form-label">
-                        Add to Timeline:
+                        <h4>Add to Timeline:</h4>
                       </label>
                       <input
                         required
@@ -187,7 +187,7 @@ export default class WeddingChecklist extends React.Component {
 
                 <div className="col-12 col-md-6">
                   <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                    <span className="text-muted">Timeline</span>
+                    <span className="">Timeline</span>
                     <span><i className="fas fa-route text-muted pe-2 mr-2" /></span>
                   </h4>
 

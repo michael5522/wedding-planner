@@ -259,7 +259,7 @@ export default class Home extends React.Component {
           <div className="row">
 
             <div className="col-md-4 d-flex align-items-stretch justify-content-center">
-              <div className="card border-dark mb-3 card-shadow home-card-background">
+              <div className="card border-dark mb-3 card-shadow home-card-background effect">
                 <h5 className="card-header lustria-font text-white">Guest List Manager</h5>
                 <div className="card-body text-white">
                   <p className="card-text lustria-font">Simplify address collection. <br />
@@ -270,7 +270,7 @@ export default class Home extends React.Component {
             </div>
 
             <div className="col-md-4 d-flex align-items-stretch justify-content-center">
-              <div className="card border-dark mb-3 card-shadow home-card-background">
+              <div className="card border-dark mb-3 card-shadow home-card-background effect">
                 <h5 className="card-header lustria-font text-white">A Wedding To-Do List</h5>
                 <div className="card-body text-white">
                   <p className="card-text lustria-font">Add. Remove. Update. <br />
@@ -282,7 +282,7 @@ export default class Home extends React.Component {
             </div>
 
             <div className="col-md-4 d-flex align-items-stretch justify-content-center">
-              <div className="card border-dark mb-3 card-shadow home-card-background">
+              <div className="card border-dark mb-3 card-shadow home-card-background effect">
                 <h5 className="card-header lustria-font text-white">Set up your Budget</h5>
                 <div className="card-body text-white">
                   <p className="card-text lustria-font">Stay on top of yours spending -<br /> Keep track of your total budget, the prices of everything, and any further outstanding fees!</p>
