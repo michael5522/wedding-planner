@@ -43,3 +43,81 @@ h6 {
   margin-bottom: 0.1rem;
   margin-top: 0.1rem;
 }
+
+/* btn for homepage */
+
+.splash-button {
+  color: green;
+  font-size: 17px;
+  padding: 13px 36px;
+  margin-bottom: 5px;
+}
+
+/* custom area for redefining the event planning experience */
+
+.custom-row {
+  background-color: rgb(247, 247, 247);
+  opacity: 0.8;
+}
+
+/* animation for cake */
+
+.img-hover-zoom {
+  /* Modify this according to your need */
+  overflow: hidden;
+
+  /* Removing this will break the effects */
+}
+
+.img-hover-zoom-blur img {
+  transition: transform 1s, filter 2s ease-in-out;
+  filter: blur(0.5px);
+  transform: scale(1.2);
+}
+
+/* The Transformation */
+
+.img-hover-zoom-blur:hover img {
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.custom-row-2 {
+  background-image: url("https://img.freepik.com/free-vector/elegant-white-card-with-white-floral-decoration_1361-1269.jpg?w=2000&t=st=1669944773~exp=1669945373~hmac=580e5c9976e311c964b7a3cd77f44729815c362d151aad47de3eec38080c615b");
+  opacity: 0.8;
+}
+
+.image-size {
+  max-width: 60%;
+}
+
+.menu-background {
+  background-image: url("https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 629px) {
+  .image-size {
+    display: none;
+  }
+
+  .menu-background {
+    display: none;
+  }
+}
+
+.card-shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.card-shadow-type-2 {
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0 4px 16px,
+    rgba(17, 17, 26, 0.05) 0 8px 32px;
+}
+
+.lustria-font {
+  font-family: Lustria, sans-serif;
+}
