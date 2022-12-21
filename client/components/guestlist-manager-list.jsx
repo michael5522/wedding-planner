@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function GuestList(props) {
-  // console.log(props.gList);
   return (
     props.gList.map(list => {
       return <li className="list-group-item" key={list.guestId}>

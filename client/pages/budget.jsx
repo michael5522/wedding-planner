@@ -19,13 +19,6 @@ export default class Budget extends React.Component {
   }
 
   componentDidMount(){
-    // fetch('/api/budgeter44')
-    //   .then(res => res.json())
-    //   .then(data =>
-    //     this.setState({
-    //       bList: data,
-    //       gettingData: false
-    //     }));
     const myInit = {
       method: 'GET',
       headers: {
@@ -71,13 +64,12 @@ export default class Budget extends React.Component {
   handleSubmit(event) {
 
     event.preventDefault();
-    // console.log('it is a register handle submit');
-    // console.log('inside handle submit', this.state);
+
     const newItem = {
       item: this.state.item,
       cost: this.state.cost
     };
-    // console.log('new itammm',newItem)
+
     this.addToBudget(newItem);
   }
 
@@ -115,82 +107,95 @@ export default class Budget extends React.Component {
   render() {
 
     if(this.state.gettingData){
-      console.log('hit 1st run returning null going to component did mount')
+
       return null;
     }
     const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
-      <div className="container">
+      <div>
+        <div className="position-relative overflow-hidden text-center menu-row">
+          <div className="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 className="display-4 font-weight-normal lustria-font menu-text">Budget Manager</h1>
+            <p className="lead font-weight-normal lustria-font italic menu-text">Please fill out your budget below!</p>
+            <a className="btn btn-outline-secondary lustria-font menu-text" href="#menu">Return to Menu</a>
+          </div>
+        </div>
 
-        <section>
-          <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" className="rounded img-fluid img-half mx-auto d-block mb-4" alt="Responsive image" />
-          <h3 className="text-center mb-2 pb-2 text-secondary fw-bold">Budget Manager</h3>
-          <p className="text-center mb-2">
-            Please fill out your budget below!
-          </p>
-          <a className="d-flex justify-content-center btn btn-outline-secondary mb-3" href="#menu"> Return to Menu</a>
+        <div className="home-ultrabackground-9 p-1 mb-0 mt-0 d-flex container-fluid" />
+        <div className="budget-fixed mt-0">
+          <div className="container">
+
+            <section>
+              <img src="/images/list.png" className="img-fluid img-twenty mx-auto d-block mb-4" alt="Responsive image" />
 
 
-          <div className="row">
+              <div className="row">
 
-            <div className="col-12 col-md-6">
+                <div className="col-12 col-md-6">
 
-              <form className="w-100" onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label htmlFor="item" className="form-label">
-                    Add an Category:
-                  </label>
-                  <input
-                    required
-                    autoFocus
-                    id="item"
-                    type="text"
-                    name="item"
-                    value={this.state.item}
-                    onChange={handleChange}
-                    className="form-control bg-light" />
+                  <form className="w-100" onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                      <label htmlFor="item" className="form-label">
+                        <h4>Add an Category:</h4>
+                      </label>
+                      <input
+                        required
+                        autoFocus
+                        id="item"
+                        type="text"
+                        name="item"
+                        value={this.state.item}
+                        onChange={handleChange}
+                        className="form-control bg-light" />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="cost" className="form-label">
+                        Cost:
+                      </label>
+                      <input
+                        required
+                        id="cost"
+                        type="text"
+                        name="cost"
+                        value={this.state.cost}
+                        onChange={handleChange}
+                        className="form-control bg-light" />
+                    </div>
+                    <div className="d-flex ">
+                      <button type="submit" className="btn btn-outline-secondary btn-block">
+                        Add to List
+                      </button>
+                    </div>
+                  </form>
+
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="cost" className="form-label">
-                    Cost:
-                  </label>
-                  <input
-                    required
-                    id="cost"
-                    type="text"
-                    name="cost"
-                    value={this.state.cost}
-                    onChange={handleChange}
-                    className="form-control bg-light" />
+
+                <div className="col-12 col-md-6">
+                  <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
+                    <span className="">Item List</span>
+                    <span><i className="fas fa-balance-scale-left text-muted pe-2 mr-2" /></span>
+                  </h4>
+
+                  <ul className="list-group mb-2 overflow-control">
+
+                    <TodoList todos={this.state.bList} delete={this.deleteItem} />
+
+                  </ul>
                 </div>
-                <div className="d-flex ">
-                  <button type="submit" className="btn btn-outline-secondary btn-block">
-                    Add to List
-                  </button>
-                </div>
-              </form>
 
-            </div>
-
-            <div className="col-12 col-md-6">
-              <h4 className="d-flex justify-content-between align-items-center mb-2 mt-2">
-                <span className="text-muted">Item List</span>
-                <span><i className="fas fa-balance-scale-left text-muted pe-2 mr-2" /></span>
-              </h4>
-
-              <ul className="list-group mb-2 overflow-control">
-
-                <TodoList todos={this.state.bList} delete={this.deleteItem}/>
-
-              </ul>
-            </div>
+              </div>
+            </section>
 
           </div>
-        </section>
+        </div>
+        <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
+        <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
-      </div>
+        </div>
+
+
     );
   }
 

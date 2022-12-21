@@ -11,7 +11,8 @@ import Faq from './pages/faq';
 import Budget from './pages/budget';
 import WeddingChecklist from './pages/wedding-checklist';
 import GuestListManager from './pages/guestlist-manager';
-import CateringList from './pages/wedding-catering-list'
+import CateringList from './pages/wedding-catering-list';
+import Guideline from './pages/guideline';
 import { parseRoute } from './lib';
 
 export default class App extends React.Component {
@@ -81,7 +82,10 @@ export default class App extends React.Component {
       return <GuestListManager />;
     }
     if (route.path === 'cateringlist'){
-      return <CateringList />
+      return <CateringList />;
+    }
+    if (route.path === 'guideline') {
+      return <Guideline />;
     }
     return <NotFound />;
   }

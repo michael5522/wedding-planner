@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function TodoListWeddingCheckList(props) {
-  // console.log(props.todos);
+
   return (
     props.todos.map(todo => {
       return <li className="list-group-item" key={todo.checkListId}>

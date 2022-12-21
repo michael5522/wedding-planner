@@ -27,19 +27,15 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-
     this.setState({ status: setInterval(this.autoTimer, 8000) });
 
   }
 
   render() {
-
     const total = this.props.poke;
 
     return (
-
       <div><img src={total[this.state.photo].url} className="rounded card-shadow img-fluid" alt="Responsive image" /></div>
-
     );
   }
 }
