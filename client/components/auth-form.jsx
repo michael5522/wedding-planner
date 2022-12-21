@@ -64,7 +64,8 @@ export default class AuthForm extends React.Component {
       return (
         <form className="w-100" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">
+            <label htmlFor="email" className="form-label lustria-font">
+              <i className="fas fa-envelope fa-fw"></i>
               Email
             </label>
             <input
@@ -77,7 +78,8 @@ export default class AuthForm extends React.Component {
               className="form-control bg-light" />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password" className="form-label lustria-font">
+              <i className="fas fa-key fa-fw"></i>
               Password
             </label>
             <input
@@ -90,11 +92,11 @@ export default class AuthForm extends React.Component {
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <small>
-              <a className="text-muted" href={alternateActionHref}>
+              <a className="text-muted lustria-font" href={alternateActionHref}>
                 {alternatActionText}
               </a>
             </small>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-light lustria-font">
               {submitButtonText}
             </button>
           </div>
@@ -104,8 +106,9 @@ export default class AuthForm extends React.Component {
       return (
         <form className="w-100" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="firstName" className="form-label">
-              First Name
+            <label htmlFor="firstName" className="form-label lustria-font">
+              <i className="fas fa-user fa-fw"></i>
+               First Name
             </label>
             <input
               required
@@ -118,7 +121,8 @@ export default class AuthForm extends React.Component {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="lastName" className="form-label">
+            <label htmlFor="lastName" className="form-label lustria-font">
+              <i className="fas fa-user fa-fw"></i>
               Last Name
             </label>
             <input
@@ -132,7 +136,8 @@ export default class AuthForm extends React.Component {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">
+            <label htmlFor="email" className="form-label lustria-font">
+              <i className="fas fa-envelope fa-fw"></i>
               Email
             </label>
             <input
@@ -146,7 +151,8 @@ export default class AuthForm extends React.Component {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password" className="form-label lustria-font">
+              <i className="fas fa-key fa-fw"></i>
               Password
             </label>
             <input
@@ -160,11 +166,11 @@ export default class AuthForm extends React.Component {
 
           <div className="d-flex justify-content-between align-items-center">
             <small>
-              <a className="text-muted" href={alternateActionHref}>
+              <a className="text-muted lustria-font" href={alternateActionHref}>
                 {alternatActionText}
               </a>
             </small>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-light lustria-font">
               {submitButtonText}
             </button>
           </div>
