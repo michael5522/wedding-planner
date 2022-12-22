@@ -4,7 +4,8 @@ export default function MenuInfo(props) {
   return (
     <div className="row custom-row">
       <div className="col-12 col-md-6 d-flex justify-content-center img-hover-zoom img-hover-zoom-blur">
-        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzE1fHx3ZWRkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" className="img-fluid image-size card-shadow-type-2" alt="Responsive image" />
+        {/* <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzE1fHx3ZWRkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" className="img-fluid image-size card-shadow-type-2" alt="Responsive image" /> */}
+        <img src="/images/bcake.png" className="img-fluid image-size card-shadow-type-2" alt="Responsive image" />
       </div>
 
       <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">

@@ -97,10 +97,10 @@ h6 {
   transform: scale(1);
 }
 
-.custom-row-2 {
+/* .custom-row-2 {
   background-image: url("https://img.freepik.com/free-vector/elegant-white-card-with-white-floral-decoration_1361-1269.jpg?w=2000&t=st=1669944773~exp=1669945373~hmac=580e5c9976e311c964b7a3cd77f44729815c362d151aad47de3eec38080c615b");
   opacity: 0.8;
-}
+} */
 
 .custom-row-login-register {
   background-image: url("https://img.freepik.com/free-vector/elegant-white-card-with-white-floral-decoration_1361-1269.jpg?w=2000&t=st=1669944773~exp=1669945373~hmac=580e5c9976e311c964b7a3cd77f44729815c362d151aad47de3eec38080c615b");
@@ -111,7 +111,8 @@ h6 {
 }
 
 .home-background {
-  background-image: url("https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  /* background-image: url("https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
+  background-image: url("/images/splash.png");
   opacity: 0.8;
   background-repeat: no-repeat;
   background-size: cover;
@@ -154,7 +155,8 @@ h6 {
 }
 
 .menu-background-fixed {
-  background-image: url("https://images.unsplash.com/photo-1525441273400-056e9c7517b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1525441273400-056e9c7517b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"); */
+  background-image: url("/images/menu-background-fixed.png");
   opacity: 0.8;
   min-height: 50em;
   background-repeat: no-repeat;
@@ -198,7 +200,8 @@ h6 {
 }
 
 .home-card-background {
-  background-image: url("https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"); */
+  background-image: url("/images/card-splash.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -207,7 +210,8 @@ h6 {
 }
 
 .home-background-second {
-  background-image: url("https://images.pexels.com/photos/265893/pexels-photo-265893.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  /* background-image: url("https://images.pexels.com/photos/265893/pexels-photo-265893.jpeg?auto=compress&cs=tinysrgb&w=1600"); */
+  background-image: url("/images/bouquet.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -230,7 +234,8 @@ h6 {
 }
 
 .faq-background-fixed {
-  background-image: url("https://images.pexels.com/photos/4466492/pexels-photo-4466492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  /* background-image: url("https://images.pexels.com/photos/4466492/pexels-photo-4466492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
+  background-image: url("/images/faq-background.png");
   opacity: 0.9;
   min-height: 50em;
   background-repeat: no-repeat;
@@ -243,7 +248,8 @@ h6 {
 }
 
 .guest-list-background-fixed {
-  background-image: url("https://images.unsplash.com/photo-1560145725-18e738a9a336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3053&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1560145725-18e738a9a336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3053&q=80"); */
+  background-image: url("/images/guest-list-background-fixed.png");
   opacity: 0.8;
   min-height: 50em;
   background-repeat: no-repeat;
@@ -252,7 +258,8 @@ h6 {
 }
 
 .wedding-catering-list-fixed {
-  background-image: url("https://images.unsplash.com/photo-1520245787685-fb1e6732fb76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1520245787685-fb1e6732fb76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80"); */
+  background-image: url("images/wedding-catering-list-fixed.png");
   opacity: 0.8;
   min-height: 50em;
   background-repeat: no-repeat;
@@ -261,7 +268,8 @@ h6 {
 }
 
 .budget-fixed {
-  background-image: url("https://images.pexels.com/photos/1410226/pexels-photo-1410226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  /* background-image: url("https://images.pexels.com/photos/1410226/pexels-photo-1410226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
+  background-image: url("images/budget-fixed.png");
   opacity: 0.8;
   min-height: 50em;
   background-repeat: no-repeat;
@@ -270,7 +278,8 @@ h6 {
 }
 
 .wedding-checklist-fixed {
-  background-image: url("https://images.pexels.com/photos/1050485/pexels-photo-1050485.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  /* background-image: url("https://images.pexels.com/photos/1050485/pexels-photo-1050485.jpeg?auto=compress&cs=tinysrgb&w=1600"); */
+  background-image: url("/images/wedding-checklist-fixed.png");
   opacity: 0.9;
   min-height: 50em;
   background-repeat: no-repeat;
