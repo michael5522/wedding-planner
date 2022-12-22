@@ -35,7 +35,6 @@ export default class CateringList extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
@@ -52,7 +51,6 @@ export default class CateringList extends React.Component {
     };
 
     function compareFoodCategory(a,b){
-      // console.log('1',a.foodCategory,'2', b.foodCategory)
       if(a.foodCategory > b.foodCategory){
         return 1;
       }else if (a.foodCategory < b.foodCategory){
@@ -78,8 +76,6 @@ export default class CateringList extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('handle submit ------it is a handle submit of the form inside wedding checklist');
-    // console.log('handle submit -------inside handle submit', this.state);
 
     const newItem = {
       foodItem: this.state.foodItem,
@@ -116,17 +112,11 @@ export default class CateringList extends React.Component {
           foodList: foodListCopy
         })
       )
-    // this.setState({
-    //   foodList: foodListCopy
-    // });
-    // console.log('answer????',foodListCopy)
   }
 
   render() {
-    // console.log(this.state)
 
     if (this.state.gettingData) {
-      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;

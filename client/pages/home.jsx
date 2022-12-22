@@ -101,19 +101,14 @@ export default class Home extends React.Component {
 
         </div>
 
-        {/* <div className="position-relative overflow-hidden home-background"/>
-        <div className="home-black p-4 mb-3 mt-3 d-flex  justify-content-center aligh-items-center container-fluid" /> */}
         <div className="position-relative overflow-hidden text-center  home-background-second menu-background">
-          {/* <i className="fas fa-hands-helping fa-4x text-white mt-5" /> */}
           <div className="col-md-5 p-lg-5 mt-2">
 
             <h3 className="customfont1 mate-font">What people say</h3>
           </div>
           <h2 className="customfont1 mate-font text-white"> It is never too early to start planning</h2>
-          {/* <p className="customfont1 lustria-font italic"> Get started now!</p> */}
           <a href="#register" className="btn btn-link customfont1 lustria-font italic" role="button">{homePageButton}</a>
         </div>
-        {/* <div className="home-black p-4 mb-3 mt-0 d-flex  justify-content-center aligh-items-center container-fluid" /> */}
 
       </div>
 
@@ -122,10 +117,3 @@ export default class Home extends React.Component {
 }
 
 Home.contextType = AppContext;
-
-//
-//
-//
-//
-//
-//

@@ -34,31 +34,29 @@ export default class App extends React.Component {
       showView(window.location.hash);
     });
     function showView(newHash) {
-      console.log('newHash:', newHash);
     }
+
     const token = window.localStorage.getItem('react-context-jwt');
     const user = token ? jwtDecode(token) : null;
-    console.log(user);
+
     this.setState({ user, isAuthorizing: false });
   }
 
   handleSignIn(result) {
-    console.log('app.js handle sign in should add local storage');
     const { user, token } = result;
-    console.log(user, token);
+
     window.localStorage.setItem('react-context-jwt', token);
     this.setState({ user });
   }
 
   handleSignOut() {
-    console.log('handle sign out trigger hereeeeeeeee');
     window.localStorage.removeItem('react-context-jwt');
     location.hash = '#';
     this.setState({ user: null });
   }
 
   renderPage() {
-    console.log('111', this.state.route);
+
     const { route } = this.state;
     if (route.path === '') {
       return <Home />;

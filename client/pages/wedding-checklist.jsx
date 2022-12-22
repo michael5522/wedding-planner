@@ -36,7 +36,6 @@ export default class WeddingChecklist extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
@@ -101,8 +100,6 @@ export default class WeddingChecklist extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist');
-    // console.log('inside handle submit', this.state);
 
     const newItem = {
       checkListToDo: this.state.checkListToDo,
@@ -113,7 +110,6 @@ export default class WeddingChecklist extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
     if (this.state.gettingData) {
       console.log('hit 1st run returning null going to component did mount')
       return null;
@@ -137,8 +133,6 @@ export default class WeddingChecklist extends React.Component {
 
             <section>
               <img src="/images/list.png" className="img-fluid img-twenty mx-auto d-block mb-4" alt="Responsive image" />
-
-
 
               <div className="row">
 
@@ -207,7 +201,6 @@ export default class WeddingChecklist extends React.Component {
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
         </div>
-
 
     );
   }

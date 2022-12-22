@@ -3,7 +3,6 @@ import React from 'react';
 import AppContext from '../lib/app-context';
 import GuestList from '../components/guestlist-manager-list';
 
-
 export default class GuestListManager extends React.Component {
   constructor(props) {
     super(props);
@@ -151,7 +150,6 @@ export default class GuestListManager extends React.Component {
             <section>
               <img src="/images/list.png" className="img-fluid img-twenty-five mx-auto d-block mb-4" alt="Responsive image" />
 
-
               <div className="row">
 
                 <div className="col-12 col-md-6">
@@ -235,9 +233,7 @@ export default class GuestListManager extends React.Component {
                   </h4>
 
                   <ul className="list-group mb-5 overflow-control">
-
                     <GuestList gList={this.state.bList} delete={this.deleteGuest} />
-
                   </ul>
                 </div>
 

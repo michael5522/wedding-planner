@@ -3,7 +3,6 @@ import React from 'react';
 import AppContext from '../lib/app-context';
 import TodoList from '../components/budget-list'
 
-
 export default class Budget extends React.Component {
   constructor(props) {
     super(props);
@@ -99,15 +98,11 @@ export default class Budget extends React.Component {
           bList: budgetListCopy
         })
       )
-
-
-
   }
 
   render() {
 
     if(this.state.gettingData){
-
       return null;
     }
     const { user } = this.context;
@@ -129,7 +124,6 @@ export default class Budget extends React.Component {
 
             <section>
               <img src="/images/list.png" className="img-fluid img-twenty mx-auto d-block mb-4" alt="Responsive image" />
-
 
               <div className="row">
 
@@ -194,7 +188,6 @@ export default class Budget extends React.Component {
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
         </div>
-
 
     );
   }
