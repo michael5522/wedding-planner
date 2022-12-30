@@ -37,7 +37,6 @@ export default class AuthForm extends React.Component {
           this.props.onSignIn(result);
         }
       });
-
   }
 
   render() {
