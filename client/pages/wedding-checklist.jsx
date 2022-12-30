@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
 
 export default class WeddingChecklist extends React.Component {
@@ -23,7 +21,7 @@ export default class WeddingChecklist extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/weddingCheckListUser', myInit)
       .then(res => res.json())
       .then(data =>
@@ -39,8 +37,6 @@ export default class WeddingChecklist extends React.Component {
   }
 
   addToWeddingChecklist(newItem) {
-    const budgetList = this.state.bList;
-    const budgetListCopy = [...budgetList];
     const myInit = {
       method: 'POST',
       headers: {
@@ -61,20 +57,19 @@ export default class WeddingChecklist extends React.Component {
         this.setState({
           bList: newList,
           checkListToDo: '',
-          checkListCategory: '',
-        })
+          checkListCategory: ''
+        });
       }
-    );
+      );
   }
 
   deleteItem(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.checkListId;
-    console.log(iDofItem);
     const weddingCheckList = this.state.bList;
     const weddingCheckListCopy = [...weddingCheckList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.checkListId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.checkListId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -93,7 +88,7 @@ export default class WeddingChecklist extends React.Component {
         this.setState({
           bList: weddingCheckListCopy
         })
-      )
+      );
   }
 
   handleSubmit(event) {
@@ -110,7 +105,6 @@ export default class WeddingChecklist extends React.Component {
     if (this.state.gettingData) {
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -196,7 +190,7 @@ export default class WeddingChecklist extends React.Component {
 
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
-        </div>
+      </div>
 
     );
   }

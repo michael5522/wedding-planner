@@ -1,7 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
-import TodoList from '../components/budget-list'
+import TodoList from '../components/budget-list';
 
 export default class Budget extends React.Component {
   constructor(props) {
@@ -17,13 +15,13 @@ export default class Budget extends React.Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const myInit = {
       method: 'GET',
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/budgeter4', myInit)
       .then(res => res.json())
       .then(data =>
@@ -38,7 +36,7 @@ export default class Budget extends React.Component {
     this.setState({ [name]: value });
   }
 
-  addToBudget(newItem){
+  addToBudget(newItem) {
     const budgetList = this.state.bList;
     const budgetListCopy = [...budgetList];
     const myInit = {
@@ -74,12 +72,11 @@ export default class Budget extends React.Component {
 
   deleteItem(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.itemId;
-    console.log(iDofItem);
     const budgetList = this.state.bList;
     const budgetListCopy = [...budgetList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.itemId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.itemId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -97,15 +94,14 @@ export default class Budget extends React.Component {
         this.setState({
           bList: budgetListCopy
         })
-      )
+      );
   }
 
   render() {
 
-    if(this.state.gettingData){
+    if (this.state.gettingData) {
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -187,7 +183,7 @@ export default class Budget extends React.Component {
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
-        </div>
+      </div>
 
     );
   }

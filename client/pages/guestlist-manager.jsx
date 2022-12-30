@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import GuestList from '../components/guestlist-manager-list';
 
 export default class GuestListManager extends React.Component {
@@ -25,7 +23,7 @@ export default class GuestListManager extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/guestListManager', myInit)
       .then(res => res.json())
       .then(data =>
@@ -63,7 +61,7 @@ export default class GuestListManager extends React.Component {
 
     fetch('api/GuestListAddEntry', myInit)
       .then(res => res.json())
-      .then(data =>{
+      .then(data => {
         const newList = guestListCopy.concat(data);
         newList.sort(compareRelationship);
         this.setState({
@@ -72,8 +70,8 @@ export default class GuestListManager extends React.Component {
           guestLastName: '',
           guestEmail: '',
           guestRelationship: ''
-          })
-        }
+        });
+      }
       );
   }
 
@@ -89,13 +87,13 @@ export default class GuestListManager extends React.Component {
     this.addToGuestListManager(newItem);
   }
 
-  deleteGuest(itemToBeDeleted){
+  deleteGuest(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.guestId;
     const guestList = this.state.bList;
     const guestListCopy = [...guestList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.guestId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.guestId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -103,7 +101,7 @@ export default class GuestListManager extends React.Component {
     removeObjectWithId(guestListCopy, iDofItem);
     this.setState({
       bList: guestListCopy
-    })
+    });
 
     const myInit = {
       method: 'DELETE',
@@ -113,18 +111,17 @@ export default class GuestListManager extends React.Component {
       }
     };
     fetch(`/api/deleteGuest/${iDofItem}`, myInit)
-    .then(
-      this.setState({
-        bList: guestListCopy
-      })
-    )
+      .then(
+        this.setState({
+          bList: guestListCopy
+        })
+      );
   }
 
   render() {
     if (this.state.gettingData) {
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
     return (
       <div>

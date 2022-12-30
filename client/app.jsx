@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import AppContext from './lib/app-context';
@@ -19,7 +18,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user:null,
+      user: null,
       isAuthorizing: true,
       route: parseRoute(window.location.hash)
     };
@@ -73,13 +72,13 @@ export default class App extends React.Component {
     if (route.path === 'budgetlist') {
       return <Budget />;
     }
-    if (route.path === 'weddingchecklist'){
+    if (route.path === 'weddingchecklist') {
       return <WeddingChecklist />;
     }
     if (route.path === 'guestlist') {
       return <GuestListManager />;
     }
-    if (route.path === 'cateringlist'){
+    if (route.path === 'cateringlist') {
       return <CateringList />;
     }
     if (route.path === 'guideline') {

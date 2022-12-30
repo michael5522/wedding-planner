@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import WeddingCateringList from '../components/wedding-checklist-catering-list';
 
 export default class CateringList extends React.Component {
@@ -23,7 +21,7 @@ export default class CateringList extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/foodListManagerListByUser', myInit)
       .then(res => res.json())
       .then(data =>
@@ -50,10 +48,10 @@ export default class CateringList extends React.Component {
       body: JSON.stringify(newItem)
     };
 
-    function compareFoodCategory(a,b){
-      if(a.foodCategory > b.foodCategory){
+    function compareFoodCategory(a, b) {
+      if (a.foodCategory > b.foodCategory) {
         return 1;
-      }else if (a.foodCategory < b.foodCategory){
+      } else if (a.foodCategory < b.foodCategory) {
         return -1;
       }
       return 0;
@@ -67,8 +65,8 @@ export default class CateringList extends React.Component {
         this.setState({
           foodList: newList,
           foodItem: '',
-          foodCategory: '',
-        })
+          foodCategory: ''
+        });
       }
       );
   }
@@ -83,13 +81,13 @@ export default class CateringList extends React.Component {
     this.addToFoodList(newItem);
   }
 
-  deleteItem(itemToBeDeleted){
+  deleteItem(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.foodId;
     const foodList = this.state.foodList;
     const foodListCopy = [...foodList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.foodId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.foodId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -108,7 +106,7 @@ export default class CateringList extends React.Component {
         this.setState({
           foodList: foodListCopy
         })
-      )
+      );
   }
 
   render() {
@@ -116,7 +114,6 @@ export default class CateringList extends React.Component {
     if (this.state.gettingData) {
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -198,12 +195,12 @@ export default class CateringList extends React.Component {
 
           </div>
 
-          </div>
+        </div>
 
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
-        </div>
+      </div>
 
     );
   }
