@@ -3,7 +3,6 @@ import React from 'react';
 import AppContext from '../lib/app-context';
 import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
 
-
 export default class WeddingChecklist extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +94,6 @@ export default class WeddingChecklist extends React.Component {
           bList: weddingCheckListCopy
         })
       )
-
   }
 
   handleSubmit(event) {
@@ -105,13 +103,11 @@ export default class WeddingChecklist extends React.Component {
       checkListToDo: this.state.checkListToDo,
       checkListCategory: this.state.checkListCategory
     };
-    console.log('new itammm',newItem)
     this.addToWeddingChecklist(newItem);
   }
 
   render() {
     if (this.state.gettingData) {
-      console.log('hit 1st run returning null going to component did mount')
       return null;
     }
     const { user } = this.context;
