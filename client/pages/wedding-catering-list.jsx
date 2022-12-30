@@ -64,7 +64,6 @@ export default class CateringList extends React.Component {
       .then(data => {
         const newList = foodListCopy.concat(data);
         newList.sort(compareFoodCategory);
-        console.log('this is the latest list',newList)
         this.setState({
           foodList: newList,
           foodItem: '',
@@ -81,13 +80,11 @@ export default class CateringList extends React.Component {
       foodItem: this.state.foodItem,
       foodCategory: this.state.foodCategory
     };
-    console.log('new itammm', newItem)
     this.addToFoodList(newItem);
   }
 
   deleteItem(itemToBeDeleted){
     const iDofItem = itemToBeDeleted.foodId;
-    console.log(iDofItem);
     const foodList = this.state.foodList;
     const foodListCopy = [...foodList];
 
@@ -207,7 +204,6 @@ export default class CateringList extends React.Component {
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
         </div>
-
 
     );
   }
