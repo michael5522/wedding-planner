@@ -151,7 +151,7 @@ export default class Budget extends React.Component {
                       <input
                         required
                         id="cost"
-                        type="text"
+                        type="number"
                         name="cost"
                         value={this.state.cost}
                         onChange={handleChange}
