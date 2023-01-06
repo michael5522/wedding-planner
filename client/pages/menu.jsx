@@ -5,7 +5,6 @@ import AppContext from '../lib/app-context';
 export default class Menu extends React.Component {
   render() {
 
-    // if (!this.context.user) return <Redirect to="sign-in" />;
     if (!this.context.user) return <Redirect to="" />;
     const { user } = this.context;
     return (
@@ -108,7 +107,6 @@ export default class Menu extends React.Component {
 
         </div>
 
-        {/* <div className="home-black p-4 mb-3 mt-0 d-flex  justify-content-center aligh-items-center container-fluid" /> */}
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 

@@ -1,8 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import GuestList from '../components/guestlist-manager-list';
-
 
 export default class GuestListManager extends React.Component {
   constructor(props) {
@@ -26,7 +23,7 @@ export default class GuestListManager extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/guestListManager', myInit)
       .then(res => res.json())
       .then(data =>
@@ -54,7 +51,6 @@ export default class GuestListManager extends React.Component {
     };
 
     function compareRelationship(a, b) {
-      console.log('1',a.guestRelationship,'2', b.guestRelationship)
       if (a.guestRelationship > b.guestRelationship) {
         return 1;
       } else if (a.guestRelationship < b.guestRelationship) {
@@ -63,21 +59,19 @@ export default class GuestListManager extends React.Component {
       return 0;
     }
 
-
     fetch('api/GuestListAddEntry', myInit)
       .then(res => res.json())
-      .then(data =>{
+      .then(data => {
         const newList = guestListCopy.concat(data);
         newList.sort(compareRelationship);
-        console.log('this is the lateest list', newList)
         this.setState({
           bList: newList,
           guestFirstName: '',
           guestLastName: '',
           guestEmail: '',
           guestRelationship: ''
-          })
-        }
+        });
+      }
       );
   }
 
@@ -93,14 +87,13 @@ export default class GuestListManager extends React.Component {
     this.addToGuestListManager(newItem);
   }
 
-  deleteGuest(itemToBeDeleted){
+  deleteGuest(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.guestId;
-    console.log('id of item to be deleted',iDofItem);
     const guestList = this.state.bList;
     const guestListCopy = [...guestList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.guestId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.guestId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -108,9 +101,8 @@ export default class GuestListManager extends React.Component {
     removeObjectWithId(guestListCopy, iDofItem);
     this.setState({
       bList: guestListCopy
-    })
+    });
 
-    console.log(this.state.bList);
     const myInit = {
       method: 'DELETE',
       headers: {
@@ -119,20 +111,18 @@ export default class GuestListManager extends React.Component {
       }
     };
     fetch(`/api/deleteGuest/${iDofItem}`, myInit)
-    .then(
-      this.setState({
-        bList: guestListCopy
-      })
-    )
+      .then(
+        this.setState({
+          bList: guestListCopy
+        })
+      );
   }
 
   render() {
     if (this.state.gettingData) {
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
-
     return (
       <div>
 
@@ -150,7 +140,6 @@ export default class GuestListManager extends React.Component {
 
             <section>
               <img src="/images/list.png" className="img-fluid img-twenty-five mx-auto d-block mb-4" alt="Responsive image" />
-
 
               <div className="row">
 
@@ -196,7 +185,7 @@ export default class GuestListManager extends React.Component {
                         required
                         autoFocus
                         id="guestEmail"
-                        type="text"
+                        type="email"
                         name="guestEmail"
                         value={this.state.guestEmail}
                         onChange={handleChange}
@@ -235,24 +224,18 @@ export default class GuestListManager extends React.Component {
                   </h4>
 
                   <ul className="list-group mb-5 overflow-control">
-
                     <GuestList gList={this.state.bList} delete={this.deleteGuest} />
-
                   </ul>
                 </div>
 
               </div>
             </section>
-
           </div>
-
         </div>
 
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
       </div>
-
-
 
     );
   }

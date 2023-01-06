@@ -1,8 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import TodoListWeddingCheckList from '../components/wedding-checklist-to-do-list';
-
 
 export default class WeddingChecklist extends React.Component {
   constructor(props) {
@@ -24,7 +21,7 @@ export default class WeddingChecklist extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/weddingCheckListUser', myInit)
       .then(res => res.json())
       .then(data =>
@@ -36,13 +33,10 @@ export default class WeddingChecklist extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
   addToWeddingChecklist(newItem) {
-    const budgetList = this.state.bList;
-    const budgetListCopy = [...budgetList];
     const myInit = {
       method: 'POST',
       headers: {
@@ -63,20 +57,19 @@ export default class WeddingChecklist extends React.Component {
         this.setState({
           bList: newList,
           checkListToDo: '',
-          checkListCategory: '',
-        })
+          checkListCategory: ''
+        });
       }
-    );
+      );
   }
 
   deleteItem(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.checkListId;
-    console.log(iDofItem);
     const weddingCheckList = this.state.bList;
     const weddingCheckListCopy = [...weddingCheckList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.checkListId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.checkListId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -95,30 +88,23 @@ export default class WeddingChecklist extends React.Component {
         this.setState({
           bList: weddingCheckListCopy
         })
-      )
-
+      );
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('it is a handle submit of the form inside wedding checklist');
-    // console.log('inside handle submit', this.state);
 
     const newItem = {
       checkListToDo: this.state.checkListToDo,
       checkListCategory: this.state.checkListCategory
     };
-    console.log('new itammm',newItem)
     this.addToWeddingChecklist(newItem);
   }
 
   render() {
-    // console.log(this.state)
     if (this.state.gettingData) {
-      console.log('hit 1st run returning null going to component did mount')
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -137,8 +123,6 @@ export default class WeddingChecklist extends React.Component {
 
             <section>
               <img src="/images/list.png" className="img-fluid img-twenty mx-auto d-block mb-4" alt="Responsive image" />
-
-
 
               <div className="row">
 
@@ -206,8 +190,7 @@ export default class WeddingChecklist extends React.Component {
 
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
-        </div>
-
+      </div>
 
     );
   }

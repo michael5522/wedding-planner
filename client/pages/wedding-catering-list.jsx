@@ -1,6 +1,4 @@
-/* eslint-disable */
 import React from 'react';
-import AppContext from '../lib/app-context';
 import WeddingCateringList from '../components/wedding-checklist-catering-list';
 
 export default class CateringList extends React.Component {
@@ -23,7 +21,7 @@ export default class CateringList extends React.Component {
       headers: {
         'X-Access-Token': localStorage.getItem('react-context-jwt')
       }
-    }
+    };
     fetch('/api/foodListManagerListByUser', myInit)
       .then(res => res.json())
       .then(data =>
@@ -35,7 +33,6 @@ export default class CateringList extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    // console.log(name, value)
     this.setState({ [name]: value });
   }
 
@@ -51,11 +48,10 @@ export default class CateringList extends React.Component {
       body: JSON.stringify(newItem)
     };
 
-    function compareFoodCategory(a,b){
-      // console.log('1',a.foodCategory,'2', b.foodCategory)
-      if(a.foodCategory > b.foodCategory){
+    function compareFoodCategory(a, b) {
+      if (a.foodCategory > b.foodCategory) {
         return 1;
-      }else if (a.foodCategory < b.foodCategory){
+      } else if (a.foodCategory < b.foodCategory) {
         return -1;
       }
       return 0;
@@ -66,37 +62,32 @@ export default class CateringList extends React.Component {
       .then(data => {
         const newList = foodListCopy.concat(data);
         newList.sort(compareFoodCategory);
-        console.log('this is the latest list',newList)
         this.setState({
           foodList: newList,
           foodItem: '',
-          foodCategory: '',
-        })
+          foodCategory: ''
+        });
       }
       );
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('handle submit ------it is a handle submit of the form inside wedding checklist');
-    // console.log('handle submit -------inside handle submit', this.state);
 
     const newItem = {
       foodItem: this.state.foodItem,
       foodCategory: this.state.foodCategory
     };
-    console.log('new itammm', newItem)
     this.addToFoodList(newItem);
   }
 
-  deleteItem(itemToBeDeleted){
+  deleteItem(itemToBeDeleted) {
     const iDofItem = itemToBeDeleted.foodId;
-    console.log(iDofItem);
     const foodList = this.state.foodList;
     const foodListCopy = [...foodList];
 
     function removeObjectWithId(arr, id) {
-      const objWithIdIndex = arr.findIndex((obj) => obj.foodId === id);
+      const objWithIdIndex = arr.findIndex(obj => obj.foodId === id);
       arr.splice(objWithIdIndex, 1);
       return arr;
     }
@@ -115,21 +106,14 @@ export default class CateringList extends React.Component {
         this.setState({
           foodList: foodListCopy
         })
-      )
-    // this.setState({
-    //   foodList: foodListCopy
-    // });
-    // console.log('answer????',foodListCopy)
+      );
   }
 
   render() {
-    // console.log(this.state)
 
     if (this.state.gettingData) {
-      // console.log('hit 1st run returning null going to component did mount')
       return null;
     }
-    const { user } = this.context;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -211,13 +195,12 @@ export default class CateringList extends React.Component {
 
           </div>
 
-          </div>
+        </div>
 
         <div className="home-ultrabackground p-1 mb-0 mt-0 d-flex container-fluid" />
         <div className="home-black d-flex p-5 flex-grow-1 container-fluid" />
 
-        </div>
-
+      </div>
 
     );
   }
