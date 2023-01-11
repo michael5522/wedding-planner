@@ -63,7 +63,7 @@ export default class AuthForm extends React.Component {
               required
               autoFocus
               id="email"
-              type="text"
+              type="email"
               name="email"
               onChange={handleChange}
               className="form-control bg-light" />
@@ -135,7 +135,7 @@ export default class AuthForm extends React.Component {
               required
               autoFocus
               id="email"
-              type="text"
+              type="email"
               name="email"
               onChange={handleChange}
               className="form-control bg-light" />
