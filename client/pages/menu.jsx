@@ -12,7 +12,7 @@ export default class Menu extends React.Component {
 
         <div className="position-relative overflow-hidden text-center menu-row">
           <div className="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 className="display-4 font-weight-normal lustria-font menu-text">Welcome {user.username},</h1>
+            <h1 className="display-4 font-weight-normal lustria-font menu-text">Welcome {user.firstName},</h1>
             <p className="lead font-weight-normal lustria-font italic menu-text">Get Started by clicking on an option below!</p>
             <a className="btn btn-outline-secondary lustria-font menu-text" href="#">Return Home</a>
           </div>
@@ -84,7 +84,7 @@ export default class Menu extends React.Component {
                   <div className="card-body padding-0-for-card-body">
                     <h5 className="card-title mb-2 text-center lustria-font text-white">Catering List</h5>
                     <p className="card-text italic mb-1 text-white">Keep track of the foods!</p>
-                    <p className="card-text indent text-justify text-white">Whether you’re having a wedding shower, bach party, engagement party or rehearsal dinner, our guest list manager was thoughtfully designed to help you gather guest info and keep it organized for any and all of your events!</p>
+                    <p className="card-text indent text-justify text-white">Whether you’re having a wedding shower, engagement party or rehearsal dinner, our guest list manager will help you gather guest info and keep it organized!</p>
                   </div>
                 </a>
               </div>
