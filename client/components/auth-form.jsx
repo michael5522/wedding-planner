@@ -6,8 +6,8 @@ export default class AuthForm extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      email: '',
-      password: ''
+      email: 'demoaccount@nomail.com',
+      password: '123'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,6 +65,7 @@ export default class AuthForm extends React.Component {
               id="email"
               type="email"
               name="email"
+              value={this.state.email}
               onChange={handleChange}
               className="form-control bg-light" />
           </div>
@@ -78,6 +79,7 @@ export default class AuthForm extends React.Component {
               id="password"
               type="password"
               name="password"
+              value={this.state.password}
               onChange={handleChange}
               className="form-control bg-light" />
           </div>

@@ -72,6 +72,7 @@ app.post('/api/auth/login', (req, res, next) => {
 
   const sql = `
         select  "userId",
+                "firstName",
                 "password"
         from "users"
         where "email" = $1
@@ -94,7 +95,8 @@ app.post('/api/auth/login', (req, res, next) => {
           }
           const payload = {
             userId: userId,
-            username: email
+            username: email,
+            firstName: user.firstName
           };
           const token = jwt.sign(payload, process.env.TOKEN_SECRET);
           res.status(200).json({ user: payload, token });
