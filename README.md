@@ -48,7 +48,7 @@ Mobile
 
 1. Open VSCode and click the Dev Container shortcut located on the bottom left of VSCode
 
-2. Clone the 'repository in container volume' with the following command:
+2. Clone the 'repository in container volume' with the following command
 
    ```shell
    git clone https://github.com/michael5522/final-project
