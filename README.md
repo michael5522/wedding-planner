@@ -46,7 +46,7 @@ Mobile
 ### Getting Started
 
 
-1. Open VSCODE and click the Dev Container shortcut located on the bottom left of VSCode
+1. Open VSCode and click the Dev Container shortcut located on the bottom left of VSCode
 
 2. Clone the 'repository in container volume' with the following command:
 
@@ -54,19 +54,19 @@ Mobile
    git clone https://github.com/michael5522/final-project
    ```
 
-3. Install all dependencies with NPM.
+3. Install all dependencies with NPM
 
     ```shell
     npm install
     ```
 
-4. Duplicate .env file from the provided .env.example below
+4. Duplicate the .env file from the provided .env.example below
 
       ```shell
         cp .env.example .env
       ```
 
-5. Start the postgresql server
+5. Start the postgresql server and turn it online
 
       ```shell
         sudo service postgresql start
@@ -77,7 +77,7 @@ Mobile
         createdb weddingDatabase
       ```
 
-7. Fill out the database with the schema and tables by running command below:
+7. Fill out the database with the schema and tables by running command below
       ```shell
         npm run db:import
       ```
