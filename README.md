@@ -40,8 +40,8 @@ Mobile
 
 ### System Requirements
 
-  1. Make sure Docker is installed and running
-  2. Install the 'Dev Containers' extension published by Microsoft
+- Make sure Docker is installed and running
+- Install the 'Dev Containers' extension published by Microsoft
 
 ### Getting Started
 
