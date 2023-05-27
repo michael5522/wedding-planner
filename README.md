@@ -1,6 +1,6 @@
 # A-List Wedding
 
-A full stack JavaScript wedding planner made for creating checklists and timeline. A-list Wedding allows users to keep track of all the details and complete tasks.
+A full stack JavaScript wedding planner made for creating and organizing lists. A-list allows users to keep track of all the details and view the timeline.
 
 
 ## Live Demo
