@@ -28,12 +28,12 @@ See it live here: [A List Wedding](https://a-list-wedding.michaelkchang.com/)
 
 Desktop
 <p align="center">
-<img src="/images/desktop-view" width="400">
+<img src="/gifs/desktop-view.gif" width="400">
 </p>
 
 Mobile
 <p align="center">
-<img src="/images/mobile-view.gif" height="500">
+<img src="/gifs/mobile-view.gif" height="500">
 </p>
 
 ## Development
