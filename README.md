@@ -28,7 +28,7 @@ See it live here: [A List Wedding](https://a-list-wedding.michaelkchang.com/)
 
 Desktop
 <p align="center">
-<img src="/gifs/desktop-view.gif" width="400">
+<img src="/gifs/desktop-view.gif">
 </p>
 
 Mobile
