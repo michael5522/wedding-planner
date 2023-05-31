@@ -51,7 +51,7 @@ Mobile
 2. Clone the 'repository in container volume' with the following command
 
    ```shell
-   git clone https://github.com/michael5522/final-project
+   git clone https://github.com/michael5522/wedding-planner
    ```
 
 3. Install all dependencies with NPM
@@ -66,23 +66,28 @@ Mobile
         cp .env.example .env
       ```
 
-5. Start the postgresql server and turn it online
+5. Inside the .env file, change the "DATABASE_URL" to the below
+      ```shell
+        postgres://dev:dev@localhost/weddingDatabase?sslmode=disable
+      ```
+
+6. Start the postgresql server and turn it online
 
       ```shell
         sudo service postgresql start
       ```
 
-6. Create a database locally that matches the one inside the .env file
+7. Create a database locally that matches the one inside the .env file
       ```shell
         createdb weddingDatabase
       ```
 
-7. Fill out the database with the schema and tables by running command below
+8. Fill out the database with the schema and tables by running command below
       ```shell
         npm run db:import
       ```
 
-8. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+9. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 
     ```shell
     npm run dev
