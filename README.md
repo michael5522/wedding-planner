@@ -51,7 +51,7 @@ Mobile
 2. Clone the 'repository in container volume' with the following command
 
    ```shell
-   git clone https://github.com/michael5522/wedding-planner
+   git clone https://github.com/michael5522/wedding-planner.git
    ```
 
 3. Install all dependencies with NPM
